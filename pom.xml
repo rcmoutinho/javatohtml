@@ -39,7 +39,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>javatohtml</finalName>
+		<finalName>javatohtml.${project.version}</finalName>
 
 		<plugins>
 			<plugin> <!-- Eclipse project -->
