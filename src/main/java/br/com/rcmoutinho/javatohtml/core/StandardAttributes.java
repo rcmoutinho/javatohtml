@@ -1,4 +1,4 @@
-package br.com.rcmoutinho.javatohtml;
+package br.com.rcmoutinho.javatohtml.core;
 
 import java.util.List;
 import java.util.Map;
