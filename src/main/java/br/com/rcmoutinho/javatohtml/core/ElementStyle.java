@@ -1,6 +1,6 @@
 package br.com.rcmoutinho.javatohtml.core;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -15,5 +15,5 @@ import java.util.Map;
  */
 public class ElementStyle {
 
-	private Map<String, String> style = new HashMap<String, String>();
+	private Map<String, String> style = new LinkedHashMap<String, String>();
 }

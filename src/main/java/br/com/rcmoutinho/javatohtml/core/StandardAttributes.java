@@ -1,6 +1,6 @@
 package br.com.rcmoutinho.javatohtml.core;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -46,7 +46,7 @@ public class StandardAttributes {
 	 * @return
 	 */
 	protected Map<String, String> getAttributesMap() {
-		HashMap<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new LinkedHashMap<String, String>();
 		
 		// FIXME Implementar mapa de acordo com a especificação do W3C
 		// TODO Analisar outra implementação do map para conseguir controlar os valores em testes
