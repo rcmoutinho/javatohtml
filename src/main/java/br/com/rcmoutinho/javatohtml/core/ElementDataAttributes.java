@@ -18,15 +18,6 @@ public class ElementDataAttributes {
 	private Map<String, String> dataAttr = new LinkedHashMap<String, String>();
 
 	/**
-	 * Verifica se existem estilos válidos.
-	 * 
-	 * @return
-	 */
-	protected boolean isEmpty() {
-		return this.dataAttr.isEmpty();
-	}
-
-	/**
 	 * Obtêm todos os atributos utilizados.
 	 * 
 	 * @return
@@ -40,5 +31,14 @@ public class ElementDataAttributes {
 		}
 
 		return dataAttr;
+	}
+
+	/**
+	 * Verifica se existem estilos válidos.
+	 * 
+	 * @return
+	 */
+	protected boolean isEmpty() {
+		return this.dataAttr.isEmpty();
 	}
 }

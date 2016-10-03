@@ -18,15 +18,6 @@ public class ElementStyle {
 	private Map<String, String> style = new LinkedHashMap<String, String>();
 
 	/**
-	 * Verifica se existem estilos válidos.
-	 * 
-	 * @return
-	 */
-	protected boolean isEmpty() {
-		return this.style.isEmpty();
-	}
-
-	/**
 	 * Obtêm os valores utilizados.
 	 * 
 	 * @return
@@ -43,5 +34,14 @@ public class ElementStyle {
 		}
 
 		return values.toString();
+	}
+
+	/**
+	 * Verifica se existem estilos válidos.
+	 * 
+	 * @return
+	 */
+	protected boolean isEmpty() {
+		return this.style.isEmpty();
 	}
 }
