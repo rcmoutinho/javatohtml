@@ -17,4 +17,31 @@ public class ElementClass {
 
 	private List<String> classes = new ArrayList<String>();
 
+	/**
+	 * Verifica se existem classes válidas.
+	 * 
+	 * @return
+	 */
+	protected boolean isEmpty() {
+		return this.classes.isEmpty();
+	}
+
+	/**
+	 * Obtêm os valores utilizados.
+	 * 
+	 * @return
+	 */
+	protected String getValues() {
+		StringBuilder values = new StringBuilder();
+
+		for (String clazz : this.classes) {
+
+			if (values.length() > 0)
+				values.append(" ");
+
+			values.append(clazz);
+		}
+
+		return values.toString();
+	}
 }

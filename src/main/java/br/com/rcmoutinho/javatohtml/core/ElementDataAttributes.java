@@ -16,4 +16,29 @@ import java.util.Map;
 public class ElementDataAttributes {
 
 	private Map<String, String> dataAttr = new LinkedHashMap<String, String>();
+
+	/**
+	 * Verifica se existem estilos válidos.
+	 * 
+	 * @return
+	 */
+	protected boolean isEmpty() {
+		return this.dataAttr.isEmpty();
+	}
+
+	/**
+	 * Obtêm todos os atributos utilizados.
+	 * 
+	 * @return
+	 */
+	protected Map<String, String> getAttributesMap() {
+		Map<String, String> dataAttr = new LinkedHashMap<String, String>();
+
+		// mantem os valores apenas colocando o prefixo esperado
+		for (String data : this.dataAttr.keySet()) {
+			dataAttr.put("data-" + data, this.dataAttr.get(data));
+		}
+
+		return dataAttr;
+	}
 }
