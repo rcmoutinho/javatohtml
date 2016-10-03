@@ -46,7 +46,7 @@ public class ElementClass {
 	protected boolean isEmpty() {
 		return this.classes.isEmpty();
 	}
-	
+
 	/**
 	 * Adiciona a classe desejada.
 	 * 
@@ -54,13 +54,23 @@ public class ElementClass {
 	 * @return
 	 */
 	public ElementClass add(String clazz) {
-		
-		if (StringUtils.isNotBlank(clazz) && !this.classes.contains(clazz))
+
+		if (StringUtils.isNotBlank(clazz) && !this.has(clazz))
 			this.classes.add(clazz);
-		
+
 		return this;
 	}
-	
+
+	/**
+	 * Verifica se a classe desejada já existe.
+	 * 
+	 * @param clazz
+	 * @return
+	 */
+	public boolean has(String clazz) {
+		return this.classes.contains(clazz);
+	}
+
 	/**
 	 * Remove a classe desejada.
 	 * 
@@ -68,13 +78,13 @@ public class ElementClass {
 	 * @return
 	 */
 	public ElementClass remove(String clazz) {
-		
-		if (StringUtils.isNotBlank(clazz) && this.classes.contains(clazz))
+
+		if (StringUtils.isNotBlank(clazz) && this.has(clazz))
 			this.classes.remove(clazz);
-		
+
 		return this;
 	}
-	
+
 	/**
 	 * Inverte a classe desejada. Se existir, apaga. O contrário, adiciona.
 	 * 
@@ -82,17 +92,17 @@ public class ElementClass {
 	 * @return
 	 */
 	public ElementClass toggle(String clazz) {
-		
+
 		if (StringUtils.isNotBlank(clazz)) {
-			
-			if (this.classes.contains(clazz)) {
+
+			if (this.has(clazz)) {
 				this.classes.remove(clazz);
-				
+
 			} else {
 				this.classes.add(clazz);
 			}
 		}
-		
+
 		return this;
 	}
 }
