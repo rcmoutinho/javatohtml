@@ -3,6 +3,8 @@ package br.com.rcmoutinho.javatohtml.core;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Controla os valores para atributos data-*.
  * 
@@ -40,5 +42,45 @@ public class ElementDataAttributes {
 	 */
 	protected boolean isEmpty() {
 		return this.dataAttr.isEmpty();
+	}
+
+	/**
+	 * Adiciona o atributo com o valor desejado. Caso o atributo já exista, seu
+	 * valor será substituído.
+	 * 
+	 * @param attr
+	 * @param value
+	 * @return
+	 */
+	public ElementDataAttributes add(String attr, String value) {
+
+		if (StringUtils.isNotBlank(attr))
+			this.dataAttr.put(attr, value);
+
+		return this;
+	}
+
+	/**
+	 * Verifica se a classe desejada já existe.
+	 * 
+	 * @param attr
+	 * @return
+	 */
+	public boolean has(String attr) {
+		return this.dataAttr.get(attr) != null;
+	}
+
+	/**
+	 * Remove o atributo desejado.
+	 * 
+	 * @param clazz
+	 * @return
+	 */
+	public ElementDataAttributes remove(String clazz) {
+
+		if (StringUtils.isNotBlank(clazz) && this.has(clazz))
+			this.dataAttr.remove(clazz);
+
+		return this;
 	}
 }
