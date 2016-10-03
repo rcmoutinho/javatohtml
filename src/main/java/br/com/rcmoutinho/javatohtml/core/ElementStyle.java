@@ -57,7 +57,7 @@ public class ElementStyle {
 	public ElementStyle add(String property, String value) {
 		
 		if (StringUtils.isNotBlank(property))
-			this.style.put(property, value); // TODO Verificar como tratar valores já existentes no estilo
+			this.style.put(property, value);
 		
 		return this;
 	}
