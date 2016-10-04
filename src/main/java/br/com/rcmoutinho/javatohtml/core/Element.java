@@ -23,22 +23,6 @@ public abstract class Element {
 	private List<Object> values = new ArrayList<Object>();
 
 	/**
-	 * Identifica o nome do elemento.
-	 * 
-	 * @return
-	 */
-	public abstract String getName();
-
-	/**
-	 * Obtêm todos os atributos específicos do elemento implementado. Obs.:
-	 * Utilizar implementação LinkedHashMap para facilitar a montagem dos
-	 * testes.
-	 * 
-	 * @return
-	 */
-	public abstract Map<String, String> getSpecificaAttributesMap();
-
-	/**
 	 * Adiciona um {@link Element} ao final do conteúdo do elemento.
 	 * 
 	 * @param element
@@ -82,6 +66,49 @@ public abstract class Element {
 
 		return this;
 	}
+
+	/**
+	 * Monta o elemento no formato HTML.
+	 * 
+	 * @return {@link String}
+	 */
+	public String getHtml() {
+		StringBuilder html = new StringBuilder();
+
+		html.append("<").append(this.getName());
+		html.append(this.getAttrValues(this.standardAttributes.getAttributesMap()));
+		html.append(this.getAttrValues(this.getSpecificaAttributesMap()));
+		html.append(">");
+
+		for (Object object : this.values) {
+
+			if (object instanceof Element)
+				html.append(((Element) object).getHtml());
+			else
+				html.append(object.toString());
+
+		}
+
+		html.append("</").append(this.getName()).append(">");
+
+		return html.toString();
+	}
+
+	/**
+	 * Identifica o nome do elemento.
+	 * 
+	 * @return
+	 */
+	public abstract String getName();
+
+	/**
+	 * Obtêm todos os atributos específicos do elemento implementado. Obs.:
+	 * Utilizar implementação LinkedHashMap para facilitar a montagem dos
+	 * testes.
+	 * 
+	 * @return
+	 */
+	public abstract Map<String, String> getSpecificaAttributesMap();
 
 	/**
 	 * Adiciona um {@link Element} no início do conteúdo do elemento.
@@ -136,33 +163,6 @@ public abstract class Element {
 	@Override
 	public String toString() {
 		return this.getHtml();
-	}
-
-	/**
-	 * Monta o elemento no formato HTML.
-	 * 
-	 * @return {@link String}
-	 */
-	public String getHtml() {
-		StringBuilder html = new StringBuilder();
-
-		html.append("<").append(this.getName());
-		html.append(this.getAttrValues(this.standardAttributes.getAttributesMap()));
-		html.append(this.getAttrValues(this.getSpecificaAttributesMap()));
-		html.append(">");
-
-		for (Object object : this.values) {
-
-			if (object instanceof Element)
-				html.append(((Element) object).getHtml());
-			else
-				html.append(object.toString());
-
-		}
-
-		html.append("</").append(this.getName()).append(">");
-
-		return html.toString();
 	}
 
 	/**
