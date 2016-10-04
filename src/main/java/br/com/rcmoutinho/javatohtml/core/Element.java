@@ -27,7 +27,7 @@ public abstract class Element {
 	 * 
 	 * @return
 	 */
-	abstract String getName();
+	public abstract String getName();
 
 	/**
 	 * Obtêm todos os atributos específicos do elemento implementado. Obs.:
@@ -36,7 +36,7 @@ public abstract class Element {
 	 * 
 	 * @return
 	 */
-	abstract Map<String, String> getSpecificaAttributesMap();
+	public abstract Map<String, String> getSpecificaAttributesMap();
 
 	/**
 	 * Adiciona um {@link Element} ao final do conteúdo do elemento.
