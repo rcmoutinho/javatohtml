@@ -135,6 +135,15 @@ public abstract class Element {
 	 */
 	@Override
 	public String toString() {
+		return this.getHtml();
+	}
+
+	/**
+	 * Monta o elemento no formato HTML.
+	 * 
+	 * @return {@link String}
+	 */
+	public String getHtml() {
 		StringBuilder html = new StringBuilder();
 
 		html.append("<").append(this.getName());
@@ -142,8 +151,14 @@ public abstract class Element {
 		html.append(this.getAttrValues(this.getSpecificaAttributesMap()));
 		html.append(">");
 
-		for (Object object : this.values)
-			html.append(object);
+		for (Object object : this.values) {
+
+			if (object instanceof Element)
+				html.append(((Element) object).getHtml());
+			else
+				html.append(object.toString());
+
+		}
 
 		html.append("</").append(this.getName()).append(">");
 
