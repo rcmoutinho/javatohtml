@@ -22,7 +22,7 @@ public class ElementStyle {
 	/**
 	 * Obtêm os valores utilizados.
 	 * 
-	 * @return
+	 * @return {@link String}
 	 */
 	protected String getValues() {
 		StringBuilder values = new StringBuilder();
@@ -41,38 +41,69 @@ public class ElementStyle {
 	/**
 	 * Verifica se existem estilos válidos.
 	 * 
-	 * @return
+	 * @return boolean
 	 */
 	protected boolean isEmpty() {
 		return this.style.isEmpty();
 	}
-	
+
+	/**
+	 * Adiciona todo o estilo desejado.
+	 * 
+	 * @param style
+	 *            (property: value;){,n}
+	 * @return {@link ElementStyle}
+	 */
+	public ElementStyle add(String style) {
+
+		if (StringUtils.isNotBlank(style)) {
+
+			for (String styleValue : style.split(";")) {
+				styleValue = styleValue.trim();
+
+				if (StringUtils.isNotBlank(styleValue)) {
+					String[] array = styleValue.split(":");
+
+					if (array.length != 2) {
+						// TODO transformar em lançamento de log
+						System.out.println("CSS Style invalido! [ " + styleValue + " ]");
+
+					} else {
+						this.style.put(array[0], array[1]);
+					}
+				}
+			}
+		}
+
+		return this;
+	}
+
 	/**
 	 * Adiciona o estilo desejado.
 	 * 
 	 * @param property
 	 * @param value
-	 * @return
+	 * @return {@link ElementStyle}
 	 */
 	public ElementStyle add(String property, String value) {
-		
+
 		if (StringUtils.isNotBlank(property))
 			this.style.put(property, value);
-		
+
 		return this;
 	}
-	
+
 	/**
 	 * Remove o estilo desejado.
 	 * 
 	 * @param property
-	 * @return
+	 * @return {@link ElementStyle}
 	 */
 	public ElementStyle remove(String property) {
-		
-		if (StringUtils.isNotBlank(property) && this.style.get(property)!=null)
+
+		if (StringUtils.isNotBlank(property) && this.style.get(property) != null)
 			this.style.remove(property);
-		
+
 		return this;
 	}
 }
