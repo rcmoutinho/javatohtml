@@ -1,3 +1,6 @@
+# ignora pasta de exemplos
+src/main/java/br/com/rcmoutinho/javatohtml/examples/
+
 # Created by https://www.gitignore.io/api/osx,eclipse,maven,java,node
 
 ### OSX ###
