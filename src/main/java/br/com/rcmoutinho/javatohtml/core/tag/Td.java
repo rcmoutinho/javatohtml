@@ -21,6 +21,30 @@ public class Td extends Element {
 	private String headers;
 	private Integer rowspan;
 
+	/**
+	 * Cria o elemento {@link Td}.
+	 */
+	public Td() {
+	}
+
+	/**
+	 * Inicializa a {@link Td} com o {@link Element} desejado.
+	 * 
+	 * @param element
+	 */
+	public Td(Element element) {
+		this.append(element);
+	}
+
+	/**
+	 * Inicializa a {@link Td} com o valor desejado.
+	 * 
+	 * @param value
+	 */
+	public Td(String value) {
+		this.append(value);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 

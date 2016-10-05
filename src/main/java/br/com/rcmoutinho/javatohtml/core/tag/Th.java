@@ -24,6 +24,30 @@ public class Th extends Element {
 	private String scope;
 	private String sorted;
 
+	/**
+	 * Cria o elemento {@link Th}.
+	 */
+	public Th() {
+	}
+
+	/**
+	 * Inicializa a {@link Th} com o {@link Element} desejado.
+	 * 
+	 * @param element
+	 */
+	public Th(Element element) {
+		this.append(element);
+	}
+
+	/**
+	 * Inicializa a {@link Th} com o valor desejado.
+	 * 
+	 * @param value
+	 */
+	public Th(String value) {
+		this.append(value);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -55,10 +79,10 @@ public class Th extends Element {
 
 		if (this.rowspan != null)
 			map.put("rowspan", this.rowspan.toString());
-		
+
 		if (this.scope != null)
 			map.put("scope", this.scope);
-		
+
 		if (this.sorted != null)
 			map.put("sorted", this.sorted);
 
