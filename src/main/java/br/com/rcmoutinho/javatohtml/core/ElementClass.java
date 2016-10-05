@@ -20,34 +20,6 @@ public class ElementClass {
 	private List<String> classes = new ArrayList<String>();
 
 	/**
-	 * Obtêm os valores utilizados.
-	 * 
-	 * @return
-	 */
-	protected String getValues() {
-		StringBuilder values = new StringBuilder();
-
-		for (String clazz : this.classes) {
-
-			if (values.length() > 0)
-				values.append(" ");
-
-			values.append(clazz);
-		}
-
-		return values.toString();
-	}
-
-	/**
-	 * Verifica se existem classes válidas.
-	 * 
-	 * @return
-	 */
-	protected boolean isEmpty() {
-		return this.classes.isEmpty();
-	}
-
-	/**
 	 * Adiciona a classe desejada.
 	 * 
 	 * @param clazz
@@ -62,6 +34,25 @@ public class ElementClass {
 	}
 
 	/**
+	 * Obtêm os valores utilizados.
+	 * 
+	 * @return
+	 */
+	public String getValues() {
+		StringBuilder values = new StringBuilder();
+
+		for (String clazz : this.classes) {
+
+			if (values.length() > 0)
+				values.append(" ");
+
+			values.append(clazz);
+		}
+
+		return values.toString();
+	}
+
+	/**
 	 * Verifica se a classe desejada já existe.
 	 * 
 	 * @param clazz
@@ -69,6 +60,15 @@ public class ElementClass {
 	 */
 	public boolean has(String clazz) {
 		return this.classes.contains(clazz);
+	}
+
+	/**
+	 * Verifica se existem classes válidas.
+	 * 
+	 * @return
+	 */
+	public boolean isEmpty() {
+		return this.classes.isEmpty();
 	}
 
 	/**

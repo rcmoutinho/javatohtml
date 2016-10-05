@@ -54,18 +54,17 @@ public class Th extends Element {
 	 * @see br.com.rcmoutinho.javatohtml.core.Element#getName()
 	 */
 	@Override
-	public String getName() {
+	protected String getName() {
 		return "th";
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * br.com.rcmoutinho.javatohtml.core.Element#getSpecificaAttributesMap()
+	 * @see br.com.rcmoutinho.javatohtml.core.Element#getSpecificAttributesMap()
 	 */
 	@Override
-	public Map<String, String> getSpecificaAttributesMap() {
+	protected Map<String, String> getSpecificAttributesMap() {
 		Map<String, String> map = new LinkedHashMap<String, String>();
 
 		if (this.abbr != null)

@@ -20,31 +20,6 @@ public class ElementDataAttributes {
 	private Map<String, String> dataAttr = new LinkedHashMap<String, String>();
 
 	/**
-	 * Obtêm todos os atributos utilizados.
-	 * 
-	 * @return
-	 */
-	protected Map<String, String> getAttributesMap() {
-		Map<String, String> dataAttr = new LinkedHashMap<String, String>();
-
-		// mantem os valores apenas colocando o prefixo esperado
-		for (String data : this.dataAttr.keySet()) {
-			dataAttr.put("data-" + data, this.dataAttr.get(data));
-		}
-
-		return dataAttr;
-	}
-
-	/**
-	 * Verifica se existem estilos válidos.
-	 * 
-	 * @return
-	 */
-	protected boolean isEmpty() {
-		return this.dataAttr.isEmpty();
-	}
-
-	/**
 	 * Adiciona o atributo com o valor desejado. Caso o atributo já exista, seu
 	 * valor será substituído.
 	 * 
@@ -61,6 +36,22 @@ public class ElementDataAttributes {
 	}
 
 	/**
+	 * Obtêm todos os atributos utilizados.
+	 * 
+	 * @return
+	 */
+	public Map<String, String> getAttributesMap() {
+		Map<String, String> dataAttr = new LinkedHashMap<String, String>();
+
+		// mantem os valores apenas colocando o prefixo esperado
+		for (String data : this.dataAttr.keySet()) {
+			dataAttr.put("data-" + data, this.dataAttr.get(data));
+		}
+
+		return dataAttr;
+	}
+
+	/**
 	 * Verifica se a classe desejada já existe.
 	 * 
 	 * @param attr
@@ -68,6 +59,15 @@ public class ElementDataAttributes {
 	 */
 	public boolean has(String attr) {
 		return this.dataAttr.get(attr) != null;
+	}
+
+	/**
+	 * Verifica se existem estilos válidos.
+	 * 
+	 * @return
+	 */
+	public boolean isEmpty() {
+		return this.dataAttr.isEmpty();
 	}
 
 	/**

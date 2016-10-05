@@ -20,34 +20,6 @@ public class ElementStyle {
 	private Map<String, String> style = new LinkedHashMap<String, String>();
 
 	/**
-	 * Obtêm os valores utilizados.
-	 * 
-	 * @return {@link String}
-	 */
-	protected String getValues() {
-		StringBuilder values = new StringBuilder();
-
-		for (String property : this.style.keySet()) {
-
-			if (values.length() > 0)
-				values.append(" ");
-
-			values.append(property).append(": ").append(this.style.get(property)).append(";");
-		}
-
-		return values.toString();
-	}
-
-	/**
-	 * Verifica se existem estilos válidos.
-	 * 
-	 * @return boolean
-	 */
-	protected boolean isEmpty() {
-		return this.style.isEmpty();
-	}
-
-	/**
 	 * Adiciona todo o estilo desejado.
 	 * 
 	 * @param style
@@ -91,6 +63,34 @@ public class ElementStyle {
 			this.style.put(property, value);
 
 		return this;
+	}
+
+	/**
+	 * Obtêm os valores utilizados.
+	 * 
+	 * @return {@link String}
+	 */
+	public String getValues() {
+		StringBuilder values = new StringBuilder();
+
+		for (String property : this.style.keySet()) {
+
+			if (values.length() > 0)
+				values.append(" ");
+
+			values.append(property).append(": ").append(this.style.get(property)).append(";");
+		}
+
+		return values.toString();
+	}
+
+	/**
+	 * Verifica se existem estilos válidos.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isEmpty() {
+		return this.style.isEmpty();
 	}
 
 	/**
