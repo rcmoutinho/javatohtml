@@ -174,8 +174,12 @@ public abstract class Element {
 	private StringBuilder getAttrValues(Map<String, String> map) {
 		StringBuilder attrValues = new StringBuilder();
 
-		for (String attr : map.keySet())
-			attrValues.append(" ").append(attr).append("='").append(map.get(attr)).append("'");
+		for (String attr : map.keySet()) {
+			String value = map.get(attr);
+			
+			if (StringUtils.isNotBlank(value))
+				attrValues.append(" ").append(attr).append("='").append(value).append("'");
+		}
 
 		return attrValues;
 	}
