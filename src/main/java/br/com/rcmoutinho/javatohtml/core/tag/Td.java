@@ -15,7 +15,7 @@ import br.com.rcmoutinho.javatohtml.core.Element;
  * @date 4 de out de 2016
  * @email rcm1989@gmail.com
  */
-public class Td extends Element {
+public class Td extends Element<Td> {
 
 	private Integer colspan;
 	private String headers;
@@ -32,7 +32,7 @@ public class Td extends Element {
 	 * 
 	 * @param element
 	 */
-	public Td(Element element) {
+	public Td(Element<?> element) {
 		this.append(element);
 	}
 
@@ -64,6 +64,11 @@ public class Td extends Element {
 			map.put("rowspan", this.rowspan.toString());
 
 		return map;
+	}
+
+	@Override
+	protected Td getType() {
+		return this;
 	}
 
 	/**

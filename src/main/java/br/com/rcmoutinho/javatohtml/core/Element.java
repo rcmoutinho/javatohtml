@@ -15,7 +15,9 @@ import org.apache.commons.lang3.StringUtils;
  * @date 30/09/2016
  * @email rcm1989@gmail.com
  */
-public abstract class Element {
+public abstract class Element<T> {
+
+	private T type;
 
 	/*
 	 * Atributos comuns a todo elemento HTML.
@@ -35,11 +37,25 @@ public abstract class Element {
 	private List<Object> values = new ArrayList<Object>();
 
 	/**
+	 * Inicialização mínima para o objeto.
+	 */
+	public Element() {
+		this.type = this.getType();
+	}
+
+	/**
 	 * Identifica o nome do elemento.
 	 * 
 	 * @return
 	 */
 	protected abstract String getName();
+
+	/**
+	 * Define o tipo que será utilizado pela implementação.
+	 * 
+	 * @return
+	 */
+	protected abstract T getType();
 
 	/**
 	 * Obtêm todos os atributos específicos do elemento implementado. Obs.:
@@ -56,13 +72,13 @@ public abstract class Element {
 	 * @param element
 	 * @return
 	 */
-	public Element append(Element element) {
+	public T append(Element<?> element) {
 
 		// proteção para evitar objetos inúteis
 		if (element != null)
 			this.values.add(element);
 
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -71,13 +87,13 @@ public abstract class Element {
 	 * @param value
 	 * @return
 	 */
-	public Element append(String value) {
+	public T append(String value) {
 
 		// proteção para evitar objetos inúteis
 		if (StringUtils.isNotBlank(value))
 			this.values.add(value);
 
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -87,12 +103,12 @@ public abstract class Element {
 	 * @param element
 	 * @return
 	 */
-	public Element appendTo(Element element) {
+	public T appendTo(Element<?> element) {
 
 		if (element != null)
 			element.values.add(this);
 
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -111,7 +127,7 @@ public abstract class Element {
 	 * @param classCss
 	 * @return {@link Element}
 	 */
-	public Element classCss(String... classCss) {
+	public T classCss(String... classCss) {
 
 		if (classCss.length > 0) {
 			for (String value : classCss) {
@@ -119,7 +135,7 @@ public abstract class Element {
 			}
 		}
 
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -140,9 +156,9 @@ public abstract class Element {
 	 * @param value
 	 * @return {@link Element}
 	 */
-	public Element dataAttr(String attr, String value) {
+	public T dataAttr(String attr, String value) {
 		this.dataAttr.add(attr, value);
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -151,9 +167,9 @@ public abstract class Element {
 	 * @param dir
 	 * @return
 	 */
-	public Element dir(String dir) {
+	public T dir(String dir) {
 		this.dir = dir;
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -162,9 +178,9 @@ public abstract class Element {
 	 * @param id
 	 * @return
 	 */
-	public Element id(String id) {
+	public T id(String id) {
 		this.id = id;
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -173,9 +189,9 @@ public abstract class Element {
 	 * @param lang
 	 * @return
 	 */
-	public Element lang(String lang) {
+	public T lang(String lang) {
 		this.lang = lang;
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -184,13 +200,13 @@ public abstract class Element {
 	 * @param element
 	 * @return
 	 */
-	public Element prepend(Element element) {
+	public T prepend(Element<?> element) {
 
 		// proteção para evitar objetos inúteis
 		if (element != null)
 			this.values.add(0, element);
 
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -199,13 +215,13 @@ public abstract class Element {
 	 * @param value
 	 * @return
 	 */
-	public Element prepend(String value) {
+	public T prepend(String value) {
 
 		// proteção para evitar objetos inúteis
 		if (StringUtils.isNotBlank(value))
 			this.values.add(0, value);
 
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -215,12 +231,12 @@ public abstract class Element {
 	 * @param element
 	 * @return
 	 */
-	public Element prependTo(Element element) {
+	public T prependTo(Element<?> element) {
 
 		if (element != null)
 			element.values.add(this);
 
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -239,9 +255,9 @@ public abstract class Element {
 	 *            (property: value;){,n}
 	 * @return {@link Element}
 	 */
-	public Element style(String style) {
+	public T style(String style) {
 		this.style.add(style);
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -251,9 +267,9 @@ public abstract class Element {
 	 * @param value
 	 * @return {@link Element}
 	 */
-	public Element style(String property, String value) {
+	public T style(String property, String value) {
 		this.style.add(property, value);
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -262,9 +278,9 @@ public abstract class Element {
 	 * @param tabindex
 	 * @return
 	 */
-	public Element tabindex(Integer tabindex) {
+	public T tabindex(Integer tabindex) {
 		this.tabindex = tabindex;
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -273,9 +289,9 @@ public abstract class Element {
 	 * @param title
 	 * @return
 	 */
-	public Element title(String title) {
+	public T title(String title) {
 		this.title = title;
-		return this;
+		return this.type;
 	}
 
 	/**
@@ -294,7 +310,7 @@ public abstract class Element {
 		for (Object object : this.values) {
 
 			if (object instanceof Element)
-				html.append(((Element) object).toHtml());
+				html.append(((Element<?>) object).toHtml());
 			else
 				html.append(object.toString());
 
@@ -305,11 +321,6 @@ public abstract class Element {
 		return html.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return this.toHtml();
@@ -324,10 +335,10 @@ public abstract class Element {
 	private Map<String, String> getAttributesMap() {
 		Map<String, String> map = new LinkedHashMap<String, String>();
 
-		if (this.elementClass.isEmpty())
+		if (!this.elementClass.isEmpty())
 			map.put("class", this.elementClass.getValues());
 
-		if (this.dataAttr.isEmpty())
+		if (!this.dataAttr.isEmpty())
 			map.putAll(this.dataAttr.getAttributesMap());
 
 		if (this.dir != null)
@@ -339,7 +350,7 @@ public abstract class Element {
 		if (this.lang != null)
 			map.put("lang", this.lang);
 
-		if (this.style.isEmpty())
+		if (!this.style.isEmpty())
 			map.put("style", this.style.getValues());
 
 		if (this.tabindex != null)

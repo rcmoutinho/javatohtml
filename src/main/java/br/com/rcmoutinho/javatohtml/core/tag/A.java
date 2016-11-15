@@ -15,7 +15,7 @@ import br.com.rcmoutinho.javatohtml.core.Element;
  * @date 4 de out de 2016
  * @email rcm1989@gmail.com
  */
-public class A extends Element {
+public class A extends Element<A> {
 
 	private String download;
 	private String href;
@@ -28,6 +28,11 @@ public class A extends Element {
 	@Override
 	protected String getName() {
 		return "a";
+	}
+
+	@Override
+	protected A getType() {
+		return this;
 	}
 
 	@Override

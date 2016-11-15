@@ -15,7 +15,7 @@ import br.com.rcmoutinho.javatohtml.core.Element;
  * @date 4 de out de 2016
  * @email rcm1989@gmail.com
  */
-public class Th extends Element {
+public class Th extends Element<Th> {
 
 	private String abbr;
 	private Integer colspan;
@@ -35,7 +35,7 @@ public class Th extends Element {
 	 * 
 	 * @param element
 	 */
-	public Th(Element element) {
+	public Th(Element<?> element) {
 		this.append(element);
 	}
 
@@ -76,6 +76,11 @@ public class Th extends Element {
 			map.put("sorted", this.sorted);
 
 		return map;
+	}
+
+	@Override
+	protected Th getType() {
+		return this;
 	}
 
 	/**

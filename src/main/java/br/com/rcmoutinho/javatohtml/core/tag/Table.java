@@ -15,7 +15,7 @@ import br.com.rcmoutinho.javatohtml.core.Element;
  * @date 4 de out de 2016
  * @email rcm1989@gmail.com
  */
-public class Table extends Element {
+public class Table extends Element<Table> {
 
 	@Override
 	protected String getName() {
@@ -25,5 +25,10 @@ public class Table extends Element {
 	@Override
 	protected Map<String, String> getSpecificAttributesMap() {
 		return new LinkedHashMap<String, String>();
+	}
+
+	@Override
+	protected Table getType() {
+		return this;
 	}
 }
