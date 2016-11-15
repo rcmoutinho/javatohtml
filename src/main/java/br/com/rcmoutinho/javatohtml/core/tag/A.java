@@ -25,21 +25,11 @@ public class A extends Element {
 	private String target;
 	private String type;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.rcmoutinho.javatohtml.core.Element#getName()
-	 */
 	@Override
 	protected String getName() {
 		return "a";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.rcmoutinho.javatohtml.core.Element#getSpecificAttributesMap()
-	 */
 	@Override
 	protected Map<String, String> getSpecificAttributesMap() {
 		Map<String, String> map = new LinkedHashMap<String, String>();

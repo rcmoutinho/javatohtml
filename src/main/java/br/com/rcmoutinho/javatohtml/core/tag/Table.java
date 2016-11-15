@@ -17,21 +17,11 @@ import br.com.rcmoutinho.javatohtml.core.Element;
  */
 public class Table extends Element {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.rcmoutinho.javatohtml.core.Element#getName()
-	 */
 	@Override
 	protected String getName() {
 		return "table";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.rcmoutinho.javatohtml.core.Element#getSpecificAttributesMap()
-	 */
 	@Override
 	protected Map<String, String> getSpecificAttributesMap() {
 		return new LinkedHashMap<String, String>();

@@ -45,21 +45,11 @@ public class Td extends Element {
 		this.append(value);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.rcmoutinho.javatohtml.core.Element#getName()
-	 */
 	@Override
 	protected String getName() {
 		return "td";
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see br.com.rcmoutinho.javatohtml.core.Element#getSpecificAttributesMap()
-	 */
 	@Override
 	protected Map<String, String> getSpecificAttributesMap() {
 		Map<String, String> map = new LinkedHashMap<String, String>();
