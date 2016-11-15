@@ -90,7 +90,7 @@ public class Th extends Element<Th> {
 	 *            text
 	 * @return {@link Th}
 	 */
-	public Th setAbbr(String abbr) {
+	public Th abbr(String abbr) {
 		this.abbr = abbr;
 		return this;
 	}
@@ -102,7 +102,7 @@ public class Th extends Element<Th> {
 	 *            number
 	 * @return {@link Th}
 	 */
-	public Th setColspan(Integer colspan) {
+	public Th colspan(Integer colspan) {
 		this.colspan = colspan;
 		return this;
 	}
@@ -114,7 +114,7 @@ public class Th extends Element<Th> {
 	 *            header_id
 	 * @return {@link Th}
 	 */
-	public Th setHeaders(String headers) {
+	public Th headers(String headers) {
 		this.headers = headers;
 		return this;
 	}
@@ -126,7 +126,7 @@ public class Th extends Element<Th> {
 	 *            number
 	 * @return {@link Th}
 	 */
-	public Th setRowspan(Integer rowspan) {
+	public Th rowspan(Integer rowspan) {
 		this.rowspan = rowspan;
 		return this;
 	}
@@ -139,7 +139,7 @@ public class Th extends Element<Th> {
 	 *            col colgroup row rowgroup
 	 * @return {@link Th}
 	 */
-	public Th setScope(String scope) {
+	public Th scope(String scope) {
 		this.scope = scope;
 		return this;
 	}
@@ -151,7 +151,7 @@ public class Th extends Element<Th> {
 	 *            reversed number reversed number number reversed
 	 * @return
 	 */
-	public Th setSorted(String sorted) {
+	public Th sorted(String sorted) {
 		this.sorted = sorted;
 		return this;
 	}

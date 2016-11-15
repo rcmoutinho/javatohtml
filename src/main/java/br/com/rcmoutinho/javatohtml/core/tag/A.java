@@ -72,7 +72,7 @@ public class A extends Element<A> {
 	 * @return {@link A}
 	 * @category HTML5
 	 */
-	public A setDownload(String download) {
+	public A download(String download) {
 		this.download = download;
 		return this;
 	}
@@ -84,7 +84,7 @@ public class A extends Element<A> {
 	 *            URL
 	 * @return {@link A}
 	 */
-	public A setHref(String href) {
+	public A href(String href) {
 		this.href = href;
 		return this;
 	}
@@ -96,7 +96,7 @@ public class A extends Element<A> {
 	 *            language_code
 	 * @return {@link A}
 	 */
-	public A setHrefLang(String hrefLang) {
+	public A hrefLang(String hrefLang) {
 		this.hrefLang = hrefLang;
 		return this;
 	}
@@ -109,7 +109,7 @@ public class A extends Element<A> {
 	 * @return {@link A}
 	 * @category HTML5
 	 */
-	public A setMedia(String media) {
+	public A media(String media) {
 		this.media = media;
 		return this;
 	}
@@ -123,7 +123,7 @@ public class A extends Element<A> {
 	 *            noreferrer noopener prev search tag
 	 * @return {@link A}
 	 */
-	public A setRel(String rel) {
+	public A rel(String rel) {
 		this.rel = rel;
 		return this;
 	}
@@ -135,7 +135,7 @@ public class A extends Element<A> {
 	 *            _blank _parent _self _top framename
 	 * @return {@link A}
 	 */
-	public A setTarget(String target) {
+	public A target(String target) {
 		this.target = target;
 		return this;
 	}
@@ -147,7 +147,7 @@ public class A extends Element<A> {
 	 *            media_type
 	 * @return {@link A}
 	 */
-	public A setType(String type) {
+	public A type(String type) {
 		this.type = type;
 		return this;
 	}

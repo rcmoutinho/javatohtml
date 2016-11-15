@@ -78,7 +78,7 @@ public class Td extends Element<Td> {
 	 *            number
 	 * @return {@link Td}
 	 */
-	public Td setColspan(Integer colspan) {
+	public Td colspan(Integer colspan) {
 		this.colspan = colspan;
 		return this;
 	}
@@ -90,7 +90,7 @@ public class Td extends Element<Td> {
 	 *            header_id
 	 * @return {@link Td}
 	 */
-	public Td setHeaders(String headers) {
+	public Td headers(String headers) {
 		this.headers = headers;
 		return this;
 	}
@@ -102,7 +102,7 @@ public class Td extends Element<Td> {
 	 *            number
 	 * @return {@link Td}
 	 */
-	public Td setRowspan(Integer rowspan) {
+	public Td rowspan(Integer rowspan) {
 		this.rowspan = rowspan;
 		return this;
 	}
