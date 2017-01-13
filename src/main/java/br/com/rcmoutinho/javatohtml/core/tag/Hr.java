@@ -6,7 +6,7 @@ import java.util.Map;
 import br.com.rcmoutinho.javatohtml.core.Element;
 
 /**
- * Implementação da tag HTML &lt;hr&gt;. <br>
+ * The implementation of &lt;hr&gt;. <br>
  * <br>
  * Ref.: http://www.w3schools.com/tags/tag_hr.asp
  * 

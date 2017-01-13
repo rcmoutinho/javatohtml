@@ -6,7 +6,7 @@ import java.util.Map;
 import br.com.rcmoutinho.javatohtml.core.Element;
 
 /**
- * Implementação da tag HTML &lt;h2&gt;. <br>
+ * The implementation of &lt;h2&gt;. <br>
  * <br>
  * Ref.: http://www.w3schools.com/tags/tag_hn.asp
  * 
