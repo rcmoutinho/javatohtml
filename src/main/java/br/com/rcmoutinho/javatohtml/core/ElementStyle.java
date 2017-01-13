@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Representa todos os estilos de um elemento.
+ * Represents the style of an element.
  * 
  * http://www.w3schools.com/tags/att_global_style.asp
  * 
@@ -20,7 +20,7 @@ public class ElementStyle {
 	private Map<String, String> style = new LinkedHashMap<String, String>();
 
 	/**
-	 * Adiciona todo o estilo desejado.
+	 * Adds some style.
 	 * 
 	 * @param style
 	 *            (property: value;){,n}
@@ -28,6 +28,7 @@ public class ElementStyle {
 	 */
 	public ElementStyle add(String style) {
 
+		// TODO throw some real log and make some tests
 		if (StringUtils.isNotBlank(style)) {
 
 			for (String styleValue : style.split(";")) {
@@ -37,7 +38,6 @@ public class ElementStyle {
 					String[] array = styleValue.split(":");
 
 					if (array.length != 2) {
-						// TODO transformar em lançamento de log
 						System.out.println("CSS Style invalido! [ " + styleValue + " ]");
 
 					} else {
@@ -51,7 +51,7 @@ public class ElementStyle {
 	}
 
 	/**
-	 * Adiciona o estilo desejado.
+	 * Adds some style setting your property and value.
 	 * 
 	 * @param property
 	 * @param value
@@ -66,7 +66,7 @@ public class ElementStyle {
 	}
 
 	/**
-	 * Obtêm os valores utilizados.
+	 * Specifies an inline CSS style for an element.
 	 * 
 	 * @return {@link String}
 	 */
@@ -85,16 +85,16 @@ public class ElementStyle {
 	}
 
 	/**
-	 * Verifica se existem estilos válidos.
+	 * Verifies if there is any style.
 	 * 
-	 * @return boolean
+	 * @return {@link Boolean}
 	 */
 	public boolean isEmpty() {
 		return this.style.isEmpty();
 	}
 
 	/**
-	 * Remove o estilo desejado.
+	 * Removes the style.
 	 * 
 	 * @param property
 	 * @return {@link ElementStyle}
