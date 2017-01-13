@@ -6,8 +6,8 @@ import java.util.Map;
 import br.com.rcmoutinho.javatohtml.core.Element;
 
 /**
- * Implementação genérica para tag HTML &lt;???&gt; desejada. <br>
- * Utilizar apenas nos casos onde a tag não tem suporte nativo.
+ * The implementation of a custom tag, &lt;???&gt;. Useful for the newest tags
+ * not supported yet or for the old HTML 4.01 tags.
  * 
  * @rcmoutinho
  * @author rodrigo.moutinho
