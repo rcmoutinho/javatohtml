@@ -297,8 +297,8 @@ public abstract class Element<T> {
 		StringBuilder html = new StringBuilder();
 
 		html.append("<").append(this.getName());
-		html.append(this.getAttrValues(this.getAttributesMap()));
-		html.append(this.getAttrValues(this.getSpecificAttributesMap()));
+		html.append(this.getHtmlAttrValues(this.getAttributesMap()));
+		html.append(this.getHtmlAttrValues(this.getSpecificAttributesMap()));
 		html.append(">");
 
 		for (Object object : this.values) {
@@ -362,7 +362,7 @@ public abstract class Element<T> {
 	 * @param map
 	 * @return
 	 */
-	private StringBuilder getAttrValues(Map<String, String> map) {
+	private StringBuilder getHtmlAttrValues(Map<String, String> map) {
 		StringBuilder attrValues = new StringBuilder();
 
 		for (String attr : map.keySet()) {
