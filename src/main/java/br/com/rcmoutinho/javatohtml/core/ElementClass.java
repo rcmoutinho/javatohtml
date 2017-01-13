@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Representa todas as classes de um elemento.
+ * Represents all CSS classes of an element.
  * 
  * http://www.w3schools.com/tags/att_global_class.asp
  * 
@@ -20,10 +20,10 @@ public class ElementClass {
 	private List<String> classes = new ArrayList<String>();
 
 	/**
-	 * Adiciona a classe desejada.
+	 * Adds a CSS class.
 	 * 
 	 * @param clazz
-	 * @return
+	 * @return {@link ElementClass}
 	 */
 	public ElementClass add(String clazz) {
 
@@ -34,9 +34,9 @@ public class ElementClass {
 	}
 
 	/**
-	 * Obtêm os valores utilizados.
+	 * Gets all classes.
 	 * 
-	 * @return
+	 * @return {@link String}
 	 */
 	public String getValues() {
 		StringBuilder values = new StringBuilder();
@@ -53,7 +53,7 @@ public class ElementClass {
 	}
 
 	/**
-	 * Verifica se a classe desejada já existe.
+	 * Verifies if the class already exists.
 	 * 
 	 * @param clazz
 	 * @return
@@ -63,7 +63,7 @@ public class ElementClass {
 	}
 
 	/**
-	 * Verifica se existem classes válidas.
+	 * Verifies if there is any class.
 	 * 
 	 * @return
 	 */
@@ -72,7 +72,7 @@ public class ElementClass {
 	}
 
 	/**
-	 * Remove a classe desejada.
+	 * Removes the CSS class.
 	 * 
 	 * @param clazz
 	 * @return
@@ -86,7 +86,8 @@ public class ElementClass {
 	}
 
 	/**
-	 * Inverte a classe desejada. Se existir, apaga. O contrário, adiciona.
+	 * Toggle the CSS class. If exists, will be removed. The opposite, adds the
+	 * class.
 	 * 
 	 * @param clazz
 	 * @return
