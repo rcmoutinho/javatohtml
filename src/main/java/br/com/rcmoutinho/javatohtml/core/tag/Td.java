@@ -22,13 +22,13 @@ public class Td extends Element<Td> {
 	private Integer rowspan;
 
 	/**
-	 * Cria o elemento {@link Td}.
+	 * Creates the {@link Td} element.
 	 */
 	public Td() {
 	}
 
 	/**
-	 * Inicializa a {@link Td} com o {@link Element} desejado.
+	 * Creates a {@link Td} with an {@link Element}.
 	 * 
 	 * @param element
 	 */
@@ -37,7 +37,7 @@ public class Td extends Element<Td> {
 	}
 
 	/**
-	 * Inicializa a {@link Td} com o valor desejado.
+	 * Creates a {@link Td} with a {@link String}.
 	 * 
 	 * @param value
 	 */

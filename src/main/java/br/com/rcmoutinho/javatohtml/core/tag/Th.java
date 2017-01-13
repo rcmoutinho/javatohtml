@@ -6,7 +6,7 @@ import java.util.Map;
 import br.com.rcmoutinho.javatohtml.core.Element;
 
 /**
- * Implementação da tag HTML &lt;th&gt;. <br>
+ * The implementation of &lt;th&gt;. <br>
  * <br>
  * Ref.: http://www.w3schools.com/tags/tag_th.asp
  * 
@@ -25,13 +25,13 @@ public class Th extends Element<Th> {
 	private String sorted;
 
 	/**
-	 * Cria o elemento {@link Th}.
+	 * Creates the {@link Th} element.
 	 */
 	public Th() {
 	}
 
 	/**
-	 * Inicializa a {@link Th} com o {@link Element} desejado.
+	 * Creates a {@link Th} with an {@link Element}.
 	 * 
 	 * @param element
 	 */
@@ -40,7 +40,7 @@ public class Th extends Element<Th> {
 	}
 
 	/**
-	 * Inicializa a {@link Th} com o valor desejado.
+	 * Creates a {@link Th} with a {@link String}.
 	 * 
 	 * @param value
 	 */
