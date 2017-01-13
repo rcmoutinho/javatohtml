@@ -8,7 +8,9 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Representa um elemento HTML completo.
+ * Global attributes that apply to any HTML element.<br>
+ * <br>
+ * Referência: http://www.w3schools.com/tags/ref_standardattributes.asp
  * 
  * @rcmoutinho
  * @author rodrigo.moutinho
@@ -17,13 +19,9 @@ import org.apache.commons.lang3.StringUtils;
  */
 public abstract class Element<T> {
 
-	private T type;
+	private T type; // element implementation type
+	private List<Object> values = new ArrayList<Object>(); // element content
 
-	/*
-	 * Atributos comuns a todo elemento HTML.
-	 * 
-	 * Referência: http://www.w3schools.com/tags/ref_standardattributes.asp
-	 */
 	private ElementDataAttributes dataAttr = new ElementDataAttributes(); // data-*
 	private String dir;
 	private ElementClass elementClass = new ElementClass();
@@ -33,48 +31,45 @@ public abstract class Element<T> {
 	private Integer tabindex;
 	private String title;
 
-	// conteúdo do elemento
-	private List<Object> values = new ArrayList<Object>();
-
 	/**
-	 * Inicialização mínima para o objeto.
+	 * Minimal initialization.
 	 */
 	public Element() {
 		this.type = this.getType();
 	}
 
 	/**
-	 * Identifica o nome do elemento.
+	 * Identifies the element name.
 	 * 
-	 * @return
+	 * @return {@link String}
 	 */
 	protected abstract String getName();
 
 	/**
-	 * Define o tipo que será utilizado pela implementação.
+	 * Defines what is the type of the implementation.
 	 * 
 	 * @return
 	 */
 	protected abstract T getType();
 
 	/**
-	 * Obtêm todos os atributos específicos do elemento implementado. Obs.:
-	 * Utilizar implementação LinkedHashMap para facilitar a montagem dos
-	 * testes.
+	 * Gets all specific attributes of the implemented element. <br>
+	 * Note: Although an abstraction is returned, it is recommended to use a
+	 * LinkedHashMap to favor and simplify unit tests.
 	 * 
-	 * @return
+	 * @return {@link Map}
 	 */
 	protected abstract Map<String, String> getSpecificAttributesMap();
 
 	/**
-	 * Adiciona um {@link Element} ao final do conteúdo do elemento.
+	 * Adds an {@link Element} in the end of the element content.
 	 * 
 	 * @param element
 	 * @return
 	 */
 	public T append(Element<?> element) {
 
-		// proteção para evitar objetos inúteis
+		// protection for worthless objects
 		if (element != null)
 			this.values.add(element);
 
@@ -82,14 +77,14 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona uma {@link String} ao final do conteúdo do elemento.
+	 * Adds a {@link String} in the end of the element content.
 	 * 
 	 * @param value
 	 * @return
 	 */
 	public T append(String value) {
 
-		// proteção para evitar objetos inúteis
+		// protection for worthless objects
 		if (StringUtils.isNotBlank(value))
 			this.values.add(value);
 
@@ -97,8 +92,7 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona este objeto no final do conteúdo do {@link Element} passado por
-	 * parâmetro.
+	 * Adds the current instance at the end of parameter {@link Element} object.
 	 * 
 	 * @param element
 	 * @return
@@ -122,10 +116,10 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona a classe desejada.
+	 * Adds css classes.
 	 * 
 	 * @param classCss
-	 * @return {@link Element}
+	 * @return
 	 */
 	public T classCss(String... classCss) {
 
@@ -148,13 +142,13 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona o atributo com o valor desejado. Caso o atributo já exista, seu
-	 * valor será substituído.
+	 * Adds an attribute and your value. If the attribute already exists, the
+	 * value will be overridden.
 	 * 
 	 * @param attr
-	 *            sem o prefixo data-
+	 *            without data- prefix
 	 * @param value
-	 * @return {@link Element}
+	 * @return
 	 */
 	public T dataAttr(String attr, String value) {
 		this.dataAttr.add(attr, value);
@@ -195,14 +189,14 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona um {@link Element} no início do conteúdo do elemento.
+	 * Adds an {@link Element} in the beginning of the element content.
 	 * 
 	 * @param element
 	 * @return
 	 */
 	public T prepend(Element<?> element) {
 
-		// proteção para evitar objetos inúteis
+		// protection for worthless objects
 		if (element != null)
 			this.values.add(0, element);
 
@@ -210,14 +204,14 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona uma {@link String} no início do conteúdo do elemento.
+	 * Adds a {@link String} in the beginning of the element content.
 	 * 
 	 * @param value
 	 * @return
 	 */
 	public T prepend(String value) {
 
-		// proteção para evitar objetos inúteis
+		// protection for worthless objects
 		if (StringUtils.isNotBlank(value))
 			this.values.add(0, value);
 
@@ -225,8 +219,8 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona este objeto no início do conteúdo do {@link Element} passado por
-	 * parâmetro.
+	 * Adds the current instance at the beginning of parameter {@link Element}
+	 * object.
 	 * 
 	 * @param element
 	 * @return
@@ -249,11 +243,11 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona todo o estilo desejado.
+	 * Adds some style.
 	 * 
 	 * @param style
 	 *            (property: value;){,n}
-	 * @return {@link Element}
+	 * @return
 	 */
 	public T style(String style) {
 		this.style.add(style);
@@ -261,11 +255,11 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Adiciona o estilo desejado.
+	 * Adds some style setting your property and value.
 	 * 
 	 * @param property
 	 * @param value
-	 * @return {@link Element}
+	 * @return
 	 */
 	public T style(String property, String value) {
 		this.style.add(property, value);
@@ -295,7 +289,7 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Monta o elemento no formato HTML.
+	 * Builds the element in HTML format.
 	 * 
 	 * @return {@link String}
 	 */
@@ -327,8 +321,8 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Obtêm um mapa com todos os atributos globais de acordo com a
-	 * especificação.
+	 * Gets a map with all globals attributes according to specification.<br>
+	 * Note: In alphabetical order to simplify unit tests.
 	 * 
 	 * @return
 	 */
@@ -363,7 +357,7 @@ public abstract class Element<T> {
 	}
 
 	/**
-	 * Monta os valores de cada atributo.
+	 * Builds the attributes values according to HTML format.
 	 * 
 	 * @param map
 	 * @return
