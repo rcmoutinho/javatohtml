@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Controla os valores para atributos data-*.
+ * Manage the data-* attributes values.
  * 
  * http://www.w3schools.com/tags/att_global_data.asp
  * 
@@ -20,12 +20,12 @@ public class ElementDataAttributes {
 	private Map<String, String> dataAttr = new LinkedHashMap<String, String>();
 
 	/**
-	 * Adiciona o atributo com o valor desejado. Caso o atributo já exista, seu
-	 * valor será substituído.
+	 * Adds an attribute and your value. If the attribute already exists, the
+	 * value will be overridden.
 	 * 
 	 * @param attr
 	 * @param value
-	 * @return
+	 * @return {@link ElementDataAttributes}
 	 */
 	public ElementDataAttributes add(String attr, String value) {
 
@@ -36,14 +36,14 @@ public class ElementDataAttributes {
 	}
 
 	/**
-	 * Obtêm todos os atributos utilizados.
+	 * Gets all data-* attributes.
 	 * 
-	 * @return
+	 * @return {@link Map}
 	 */
 	public Map<String, String> getAttributesMap() {
 		Map<String, String> dataAttr = new LinkedHashMap<String, String>();
 
-		// mantem os valores apenas colocando o prefixo esperado
+		// just set the data- prefix
 		for (String data : this.dataAttr.keySet()) {
 			dataAttr.put("data-" + data, this.dataAttr.get(data));
 		}
@@ -52,17 +52,17 @@ public class ElementDataAttributes {
 	}
 
 	/**
-	 * Verifica se a classe desejada já existe.
+	 * Verifies that the attribute already exists.
 	 * 
 	 * @param attr
-	 * @return
+	 * @return {@link Boolean}
 	 */
 	public boolean has(String attr) {
 		return this.dataAttr.get(attr) != null;
 	}
 
 	/**
-	 * Verifica se existem estilos válidos.
+	 * Verifies if there is any attribute.
 	 * 
 	 * @return
 	 */
@@ -71,15 +71,15 @@ public class ElementDataAttributes {
 	}
 
 	/**
-	 * Remove o atributo desejado.
+	 * Removes the attribute.
 	 * 
-	 * @param clazz
+	 * @param attr
 	 * @return
 	 */
-	public ElementDataAttributes remove(String clazz) {
+	public ElementDataAttributes remove(String attr) {
 
-		if (StringUtils.isNotBlank(clazz) && this.has(clazz))
-			this.dataAttr.remove(clazz);
+		if (StringUtils.isNotBlank(attr) && this.has(attr))
+			this.dataAttr.remove(attr);
 
 		return this;
 	}
