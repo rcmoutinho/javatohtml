@@ -7,6 +7,7 @@
 	<packaging>jar</packaging>
 	<version>0.0.1.beta</version>
 	<name>javatohtml</name>
+	<description>Write JAVA, build HTML.</description>
 	<url>https://twitter.com/rcmoutinho</url>
 
 	<properties>
@@ -58,7 +59,7 @@
 				</configuration>
 			</plugin>
 
-			<plugin> <!-- Análise PMD -->
+			<plugin> <!-- PMD Analysis -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${pmd.version}</version>
@@ -71,7 +72,7 @@
 				</executions>
 			</plugin>
 
-			<plugin> <!-- Análise para cobertura de testes -->
+			<plugin> <!-- Test coverage analysis -->
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.version}</version>
@@ -84,7 +85,7 @@
 				</executions>
 			</plugin>
 
-			<plugin> <!-- Gera o Site -->
+			<plugin> <!-- Generates the site -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.6</version>
@@ -102,7 +103,7 @@
 
 	<reporting>
 		<plugins>
-			<plugin> <!-- Versão para gerar o site maven -->
+			<plugin> <!-- Version to generate maven site -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>2.9</version>
@@ -114,13 +115,13 @@
 				<version>2.5</version>
 			</plugin>
 
-			<plugin> <!-- Relatório PMD -->
+			<plugin> <!-- PMD Report -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${pmd.version}</version>
 			</plugin>
 
-			<plugin> <!-- Relatório Jacoco -->
+			<plugin> <!-- Jacoco Report -->
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.version}</version>
