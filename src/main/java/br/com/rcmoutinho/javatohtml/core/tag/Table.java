@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
+import br.com.rcmoutinho.javatohtml.core.exception.UnsupportedTagException;
 
 /**
  * The implementation of &lt;table&gt;. <br>
@@ -30,5 +31,33 @@ public class Table extends Element<Table> {
 	@Override
 	protected Table getType() {
 		return this;
+	}
+	
+	@Override
+	public Table append(Element<?> element) {
+		
+		if (element instanceof Thead || element instanceof Tbody || element instanceof Tfoot || element instanceof Tr)
+			return super.append(element);
+		
+		throw new UnsupportedTagException("Element not supported");
+	}
+	
+	@Override
+	public Table append(String value) {
+		throw new UnsupportedTagException("String not supported");
+	}
+	
+	@Override
+	public Table prepend(Element<?> element) {
+		
+		if (element instanceof Thead || element instanceof Tbody || element instanceof Tfoot || element instanceof Tr)
+			return super.append(element);
+		
+		throw new UnsupportedTagException("Element not supported");
+	}
+	
+	@Override
+	public Table prepend(String value) {
+		throw new UnsupportedTagException("String not supported");
 	}
 }
