@@ -1,8 +1,8 @@
 # JAVA to HTML
-Escreva código **JAVA** para gerar **HTML** sem passar por *String* gigantes de pouca legibilidade. Crie relatórios ou modelos para envio de email de forma fácil e prática.
+Write **JAVA** code and get **HTML** without writing unreadable big *String*. Create report or email models easily.
 
 ## Motivation
-Depois de alguns anos desenvolvendo relatórios complexos em formato HTML e modelos para envio de email decidi criar uma API que respeitasse minimamente a documentação do W3C a fim de criar um compilador de HTML via código JAVA.
+After years developing complex reports on HTML format and email models, I've decided to create an API that minimally respect W3C docs to compile and transform JAVA code into HTML.
 
 ## License
 MIT Lincese
