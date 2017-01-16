@@ -1,11 +1,29 @@
 package br.com.rcmoutinho.javatohtml.core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+
+import br.com.rcmoutinho.javatohtml.core.exception.UnsupportedTagException;
+import br.com.rcmoutinho.javatohtml.core.tag.A;
+import br.com.rcmoutinho.javatohtml.core.tag.Br;
+import br.com.rcmoutinho.javatohtml.core.tag.Div;
+import br.com.rcmoutinho.javatohtml.core.tag.Em;
+import br.com.rcmoutinho.javatohtml.core.tag.H1;
+import br.com.rcmoutinho.javatohtml.core.tag.H2;
+import br.com.rcmoutinho.javatohtml.core.tag.H3;
+import br.com.rcmoutinho.javatohtml.core.tag.Hr;
+import br.com.rcmoutinho.javatohtml.core.tag.Img;
+import br.com.rcmoutinho.javatohtml.core.tag.P;
+import br.com.rcmoutinho.javatohtml.core.tag.Span;
+import br.com.rcmoutinho.javatohtml.core.tag.Strong;
+import br.com.rcmoutinho.javatohtml.core.tag.Table;
+import br.com.rcmoutinho.javatohtml.core.tag.Tag;
 
 /**
  * Global attributes that apply to any HTML element.<br>
@@ -19,6 +37,17 @@ import org.apache.commons.lang3.StringUtils;
  */
 public abstract class Element<T> {
 
+	/**
+	 * Returns all common supported tags. Do not includes specific tags
+	 * supported from &lt;table&gt;.
+	 * 
+	 * @return
+	 */
+	protected static List<Class<? extends Element<?>>> getCommonSupportedElements() {
+		return Collections.unmodifiableList(Arrays.asList(A.class, Br.class, Div.class, Em.class, H1.class, H2.class,
+				H3.class, Hr.class, Img.class, P.class, Span.class, Strong.class, Table.class, Tag.class));
+	}
+
 	private T type; // element implementation type
 	private List<Object> values = new ArrayList<Object>(); // element content
 
@@ -29,6 +58,7 @@ public abstract class Element<T> {
 	private String lang;
 	private ElementStyle style = new ElementStyle();
 	private Integer tabindex;
+
 	private String title;
 
 	/**
@@ -46,13 +76,6 @@ public abstract class Element<T> {
 	protected abstract String getName();
 
 	/**
-	 * Defines what is the type of the implementation.
-	 * 
-	 * @return
-	 */
-	protected abstract T getType();
-
-	/**
 	 * Gets all specific attributes of the implemented element. <br>
 	 * Note: Although an abstraction is returned, it is recommended to use a
 	 * LinkedHashMap to favor and simplify unit tests.
@@ -60,6 +83,39 @@ public abstract class Element<T> {
 	 * @return {@link Map}
 	 */
 	protected abstract Map<String, String> getSpecificAttributesMap();
+
+	/**
+	 * Defines which are the elements supported by the implementation. The
+	 * others will get {@link UnsupportedTagException} exception.
+	 * 
+	 * @return {@link List}
+	 */
+	protected abstract List<Class<? extends Element<?>>> getSupportedElements();
+
+	/**
+	 * Defines what is the type of the implementation.
+	 * 
+	 * @return
+	 */
+	protected abstract T getType();
+
+	/**
+	 * Defines if the tag must be properly closed.
+	 * 
+	 * @return boolean
+	 */
+	protected boolean hasEndTag() {
+		return true;
+	}
+
+	/**
+	 * Verifies the support to add {@link String} values to the element.
+	 * 
+	 * @return boolean
+	 */
+	protected boolean isStringValuesSupported() {
+		return true;
+	}
 
 	/**
 	 * Adds an {@link Element} in the end of the element content.
@@ -70,8 +126,13 @@ public abstract class Element<T> {
 	public T append(Element<?> element) {
 
 		// protection for worthless objects
-		if (element != null)
+		if (element != null) {
+
+			if (!this.getSupportedElements().contains(this.getClass()))
+				throw new UnsupportedTagException(this.getClass() + " not supported");
+
 			this.values.add(element);
+		}
 
 		return this.type;
 	}
@@ -83,6 +144,9 @@ public abstract class Element<T> {
 	 * @return
 	 */
 	public T append(String value) {
+
+		if (!this.isStringValuesSupported())
+			throw new UnsupportedTagException("String not supported");
 
 		// protection for worthless objects
 		if (StringUtils.isNotBlank(value))
@@ -197,8 +261,13 @@ public abstract class Element<T> {
 	public T prepend(Element<?> element) {
 
 		// protection for worthless objects
-		if (element != null)
+		if (element != null) {
+
+			if (!this.getSupportedElements().contains(this.getClass()))
+				throw new UnsupportedTagException(this.getClass() + " not supported");
+
 			this.values.add(0, element);
+		}
 
 		return this.type;
 	}
@@ -210,6 +279,9 @@ public abstract class Element<T> {
 	 * @return
 	 */
 	public T prepend(String value) {
+
+		if (!this.isStringValuesSupported())
+			throw new UnsupportedTagException("String not supported");
 
 		// protection for worthless objects
 		if (StringUtils.isNotBlank(value))

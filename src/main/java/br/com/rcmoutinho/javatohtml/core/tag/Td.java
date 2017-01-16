@@ -1,6 +1,7 @@
 package br.com.rcmoutinho.javatohtml.core.tag;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
@@ -64,6 +65,11 @@ public class Td extends Element<Td> {
 			map.put("rowspan", this.rowspan.toString());
 
 		return map;
+	}
+
+	@Override
+	protected List<Class<? extends Element<?>>> getSupportedElements() {
+		return getCommonSupportedElements();
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package br.com.rcmoutinho.javatohtml.core.tag;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
@@ -25,6 +26,11 @@ public class P extends Element<P> {
 	@Override
 	protected Map<String, String> getSpecificAttributesMap() {
 		return new LinkedHashMap<String, String>();
+	}
+
+	@Override
+	protected List<Class<? extends Element<?>>> getSupportedElements() {
+		return getCommonSupportedElements();
 	}
 
 	@Override

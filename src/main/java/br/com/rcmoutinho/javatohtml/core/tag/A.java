@@ -1,6 +1,8 @@
 package br.com.rcmoutinho.javatohtml.core.tag;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
@@ -31,11 +33,6 @@ public class A extends Element<A> {
 	}
 
 	@Override
-	protected A getType() {
-		return this;
-	}
-
-	@Override
 	protected Map<String, String> getSpecificAttributesMap() {
 		Map<String, String> map = new LinkedHashMap<String, String>();
 
@@ -61,6 +58,17 @@ public class A extends Element<A> {
 			map.put("type", this.type);
 
 		return map;
+	}
+
+	@Override
+	protected List<Class<? extends Element<?>>> getSupportedElements() {
+		return Arrays.asList(Br.class, Div.class, Em.class, H1.class, H2.class, H3.class, Hr.class, Img.class, P.class,
+				Span.class, Strong.class, Table.class, Tag.class);
+	}
+
+	@Override
+	protected A getType() {
+		return this;
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package br.com.rcmoutinho.javatohtml.core.tag;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
@@ -28,7 +30,17 @@ public class Tfoot extends Element<Tfoot> {
 	}
 
 	@Override
+	protected List<Class<? extends Element<?>>> getSupportedElements() {
+		return Arrays.asList(Tr.class);
+	}
+
+	@Override
 	protected Tfoot getType() {
 		return this;
+	}
+
+	@Override
+	protected boolean isStringValuesSupported() {
+		return false;
 	}
 }

@@ -1,6 +1,8 @@
 package br.com.rcmoutinho.javatohtml.core.tag;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
@@ -28,7 +30,17 @@ public class Tbody extends Element<Tbody> {
 	}
 
 	@Override
+	protected List<Class<? extends Element<?>>> getSupportedElements() {
+		return Arrays.asList(Tr.class);
+	}
+
+	@Override
 	protected Tbody getType() {
 		return this;
+	}
+
+	@Override
+	protected boolean isStringValuesSupported() {
+		return false;
 	}
 }

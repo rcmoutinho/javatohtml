@@ -1,6 +1,8 @@
 package br.com.rcmoutinho.javatohtml.core.tag;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
@@ -28,7 +30,22 @@ public class Hr extends Element<Hr> {
 	}
 
 	@Override
+	protected List<Class<? extends Element<?>>> getSupportedElements() {
+		return Arrays.asList();
+	}
+
+	@Override
 	protected Hr getType() {
 		return this;
+	}
+	
+	@Override
+	protected boolean hasEndTag() {
+		return false;
+	}
+	
+	@Override
+	protected boolean isStringValuesSupported() {
+		return false;
 	}
 }
