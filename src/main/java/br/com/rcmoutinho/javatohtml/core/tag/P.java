@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
+import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 
 /**
  * The implementation of &lt;p&gt;. <br>
@@ -30,7 +31,7 @@ public class P extends Element<P> {
 
 	@Override
 	protected List<Class<? extends Element<?>>> getSupportedElements() {
-		return getCommonSupportedElements();
+		return ElementUtils.getCommonSupportedElements();
 	}
 
 	@Override

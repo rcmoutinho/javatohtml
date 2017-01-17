@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
+import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 
 /**
  * The implementation of a custom tag, &lt;???&gt;. Useful for the newest tags
@@ -41,7 +42,7 @@ public class Tag extends Element<Tag> {
 
 	@Override
 	protected List<Class<? extends Element<?>>> getSupportedElements() {
-		return getCommonSupportedElements();
+		return ElementUtils.getCommonSupportedElements();
 	}
 
 	@Override

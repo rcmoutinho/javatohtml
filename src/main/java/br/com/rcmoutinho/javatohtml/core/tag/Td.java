@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
+import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 
 /**
  * Implementação da tag HTML &lt;td&gt;. <br>
@@ -69,7 +70,7 @@ public class Td extends Element<Td> {
 
 	@Override
 	protected List<Class<? extends Element<?>>> getSupportedElements() {
-		return getCommonSupportedElements();
+		return ElementUtils.getCommonSupportedElements();
 	}
 
 	@Override

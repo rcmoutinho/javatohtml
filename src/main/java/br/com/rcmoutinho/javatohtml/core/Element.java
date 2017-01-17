@@ -1,8 +1,6 @@
 package br.com.rcmoutinho.javatohtml.core;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,20 +8,6 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 import br.com.rcmoutinho.javatohtml.core.exception.UnsupportedTagException;
-import br.com.rcmoutinho.javatohtml.core.tag.A;
-import br.com.rcmoutinho.javatohtml.core.tag.Br;
-import br.com.rcmoutinho.javatohtml.core.tag.Div;
-import br.com.rcmoutinho.javatohtml.core.tag.Em;
-import br.com.rcmoutinho.javatohtml.core.tag.H1;
-import br.com.rcmoutinho.javatohtml.core.tag.H2;
-import br.com.rcmoutinho.javatohtml.core.tag.H3;
-import br.com.rcmoutinho.javatohtml.core.tag.Hr;
-import br.com.rcmoutinho.javatohtml.core.tag.Img;
-import br.com.rcmoutinho.javatohtml.core.tag.P;
-import br.com.rcmoutinho.javatohtml.core.tag.Span;
-import br.com.rcmoutinho.javatohtml.core.tag.Strong;
-import br.com.rcmoutinho.javatohtml.core.tag.Table;
-import br.com.rcmoutinho.javatohtml.core.tag.Tag;
 
 /**
  * Global attributes that apply to any HTML element.<br>
@@ -36,17 +20,6 @@ import br.com.rcmoutinho.javatohtml.core.tag.Tag;
  * @email rcm1989@gmail.com
  */
 public abstract class Element<T> {
-
-	/**
-	 * Returns all common supported tags. Do not includes specific tags
-	 * supported from &lt;table&gt;.
-	 * 
-	 * @return
-	 */
-	protected static List<Class<? extends Element<?>>> getCommonSupportedElements() {
-		return Collections.unmodifiableList(Arrays.asList(A.class, Br.class, Div.class, Em.class, H1.class, H2.class,
-				H3.class, Hr.class, Img.class, P.class, Span.class, Strong.class, Table.class, Tag.class));
-	}
 
 	private T type; // element implementation type
 	private List<Object> values = new ArrayList<Object>(); // element content
@@ -128,8 +101,8 @@ public abstract class Element<T> {
 		// protection for worthless objects
 		if (element != null) {
 
-			if (!this.getSupportedElements().contains(this.getClass()))
-				throw new UnsupportedTagException(this.getClass() + " not supported");
+			if (!this.getSupportedElements().contains(element.getClass()))
+				throw new UnsupportedTagException(element.getClass() + " not supported");
 
 			this.values.add(element);
 		}
@@ -263,8 +236,8 @@ public abstract class Element<T> {
 		// protection for worthless objects
 		if (element != null) {
 
-			if (!this.getSupportedElements().contains(this.getClass()))
-				throw new UnsupportedTagException(this.getClass() + " not supported");
+			if (!this.getSupportedElements().contains(element.getClass()))
+				throw new UnsupportedTagException(element.getClass() + " not supported");
 
 			this.values.add(0, element);
 		}

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
+import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 
 /**
  * The implementation of &lt;th&gt;. <br>
@@ -81,7 +82,7 @@ public class Th extends Element<Th> {
 
 	@Override
 	protected List<Class<? extends Element<?>>> getSupportedElements() {
-		return getCommonSupportedElements();
+		return ElementUtils.getCommonSupportedElements();
 	}
 
 	@Override
