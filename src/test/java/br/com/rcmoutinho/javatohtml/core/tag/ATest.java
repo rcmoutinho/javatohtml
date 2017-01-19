@@ -21,13 +21,13 @@ public class ATest {
 	}
 
 	@Test
-	public void fullAttrsBuildInOrder() {
+	public void fullAttrsBuildedInOrder() {
 		A a = new A().download("#").href("#").hrefLang("#").media("#").rel("#").target("#").type("#");
 		assertEquals("<a download='#' href='#' hrefLang='#' media='#' rel='#' target='#' type='#'></a>", a.toHtml());
 	}
 	
 	@Test
-	public void tagContentWithHref() {
+	public void textWithHref() {
 		A a = new A().href("#anchor").append("testing");
 		assertEquals("<a href='#anchor'>testing</a>", a.toHtml());
 	}
