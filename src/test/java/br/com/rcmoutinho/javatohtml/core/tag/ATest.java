@@ -15,19 +15,19 @@ import org.junit.Test;
 public class ATest {
 
 	@Test
-	public void setEmptyAttrsAndGenerateSimpleTag() {
+	public void emptyAttrsGenerateSimpleTag() {
 		A a = new A().download("").href("").hrefLang("").media("").rel("").target("").type("");
 		assertEquals("<a></a>", a.toHtml());
 	}
 
 	@Test
-	public void setFullAttrsInOrder() {
+	public void fullAttrsBuildInOrder() {
 		A a = new A().download("#").href("#").hrefLang("#").media("#").rel("#").target("#").type("#");
 		assertEquals("<a download='#' href='#' hrefLang='#' media='#' rel='#' target='#' type='#'></a>", a.toHtml());
 	}
 	
 	@Test
-	public void setTagContentWithHref() {
+	public void tagContentWithHref() {
 		A a = new A().href("#anchor").append("testing");
 		assertEquals("<a href='#anchor'>testing</a>", a.toHtml());
 	}
