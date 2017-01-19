@@ -2,8 +2,14 @@ package br.com.rcmoutinho.javatohtml.core.tag;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 
+import br.com.rcmoutinho.javatohtml.core.Element;
+import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 import br.com.rcmoutinho.javatohtml.core.exception.UnsupportedTagException;
 
 /**
@@ -16,44 +22,69 @@ import br.com.rcmoutinho.javatohtml.core.exception.UnsupportedTagException;
  */
 public class TableTest {
 
+	private String theadToHtml;
+	private String tbodyToHtml;
+	private String tfootToHtml;
+	private String trToHtml;
+	private List<Class<? extends Element<?>>> notSupportedElements;
+
+	@Before
+	public void beforeTesting() {
+
+		this.theadToHtml = "<table><thead></thead></table>";
+		this.tbodyToHtml = "<table><tbody></tbody></table>";
+		this.tfootToHtml = "<table><tfoot></tfoot></table>";
+		this.trToHtml = "<table><tr></tr></table>";
+
+		this.notSupportedElements = new ArrayList<Class<? extends Element<?>>>(
+				ElementUtils.getAllImplementedElements());
+
+		// removes supported elements
+//		this.notSupportedElements.remove(Thead.class);
+		this.notSupportedElements.remove(Tbody.class);
+		this.notSupportedElements.remove(Tfoot.class);
+		this.notSupportedElements.remove(Tr.class);
+	}
+
 	@Test
-	public void allSupportedElements() {
-		String thead = "<table><thead></thead></table>";
-		String tbody = "<table><tbody></tbody></table>";
-		String tfoot = "<table><tfoot></tfoot></table>";
-		String tr = "<table><tr></tr></table>";
+	public void checkSupportedElementsToAppend() {
+		assertEquals(this.theadToHtml, new Table().append(new Thead()).toHtml());
+		assertEquals(this.tbodyToHtml, new Table().append(new Tbody()).toHtml());
+		assertEquals(this.tfootToHtml, new Table().append(new Tfoot()).toHtml());
+		assertEquals(this.trToHtml, new Table().append(new Tr()).toHtml());
+	}
 
-		// append
-		assertEquals(thead, new Table().append(new Thead()).toHtml());
-		assertEquals(tbody, new Table().append(new Tbody()).toHtml());
-		assertEquals(tfoot, new Table().append(new Tfoot()).toHtml());
-		assertEquals(tr, new Table().append(new Tr()).toHtml());
+	@Test
+	public void checkSupportedElementsToPrepend() {
+		assertEquals(this.theadToHtml, new Table().prepend(new Thead()).toHtml());
+		assertEquals(this.tbodyToHtml, new Table().prepend(new Tbody()).toHtml());
+		assertEquals(this.tfootToHtml, new Table().prepend(new Tfoot()).toHtml());
+		assertEquals(this.trToHtml, new Table().prepend(new Tr()).toHtml());
+	}
 
-		// prepend
-		assertEquals(thead, new Table().prepend(new Thead()).toHtml());
-		assertEquals(tbody, new Table().prepend(new Tbody()).toHtml());
-		assertEquals(tfoot, new Table().prepend(new Tfoot()).toHtml());
-		assertEquals(tr, new Table().prepend(new Tr()).toHtml());
+	@Test
+	public void checkUnsupportedElementsToAppend() {
+		int unsupportedTagCount = new ElementTester().countUnsupportedTagExceptionToAppend(new Table(),
+				this.notSupportedElements);
+
+		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
+	}
+
+	@Test
+	public void checkUnsupportedElementsToPrepend() {
+		int unsupportedTagCount = new ElementTester().countUnsupportedTagExceptionToPrepend(new Table(),
+				this.notSupportedElements);
+
+		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
 	}
 
 	@Test(expected = UnsupportedTagException.class)
-	public void doNotSupportAppendString() {
-		assertEquals("<table>text</table>", new Table().append("text").toHtml());
+	public void stringAppendNotSupported() {
+		new Table().append("text");
 	}
 
 	@Test(expected = UnsupportedTagException.class)
-	public void doNotSupportPrependString() {
-		assertEquals("<table>text</table>", new Table().prepend("text").toHtml());
+	public void stringPrependNotSupported() {
+		new Table().prepend("text");
 	}
-
-	@Test(expected = UnsupportedTagException.class)
-	public void doNotSupportAppendOtherElement() {
-		assertEquals("<table><tag></tag></table>", new Table().append(new Tag("tag")).toHtml());
-	}
-
-	@Test(expected = UnsupportedTagException.class)
-	public void doNotSupportPrependOtherElement() {
-		assertEquals("<table><tag></tag></table>", new Table().prepend(new Tag("tag")).toHtml());
-	}
-
 }
