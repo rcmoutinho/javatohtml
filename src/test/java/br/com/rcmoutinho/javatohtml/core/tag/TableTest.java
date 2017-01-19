@@ -40,7 +40,7 @@ public class TableTest {
 				ElementUtils.getAllImplementedElements());
 
 		// removes supported elements
-//		this.notSupportedElements.remove(Thead.class);
+		this.notSupportedElements.remove(Thead.class);
 		this.notSupportedElements.remove(Tbody.class);
 		this.notSupportedElements.remove(Tfoot.class);
 		this.notSupportedElements.remove(Tr.class);
