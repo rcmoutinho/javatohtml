@@ -344,18 +344,24 @@ public abstract class Element<T> {
 		html.append("<").append(this.getName());
 		html.append(this.getHtmlAttrValues(this.getAttributesMap()));
 		html.append(this.getHtmlAttrValues(this.getSpecificAttributesMap()));
-		html.append(">");
 
-		for (Object object : this.values) {
+		if (this.hasEndTag()) {
+			html.append(">");
 
-			if (object instanceof Element)
-				html.append(((Element<?>) object).toHtml());
-			else
-				html.append(object.toString());
+			for (Object object : this.values) {
 
+				if (object instanceof Element)
+					html.append(((Element<?>) object).toHtml());
+				else
+					html.append(object.toString());
+
+			}
+
+			html.append("</").append(this.getName()).append(">");
+
+		} else {
+			html.append(" />");
 		}
-
-		html.append("</").append(this.getName()).append(">");
 
 		return html.toString();
 	}
