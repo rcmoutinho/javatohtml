@@ -79,12 +79,12 @@ public class TableTest {
 	}
 
 	@Test(expected = UnsupportedTagException.class)
-	public void stringAppendNotSupported() {
+	public void checkUnsupportedStringToAppend() {
 		new Table().append("text");
 	}
 
 	@Test(expected = UnsupportedTagException.class)
-	public void stringPrependNotSupported() {
+	public void checkUnsupportedStringToPrepend() {
 		new Table().prepend("text");
 	}
 }
