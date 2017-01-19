@@ -1,6 +1,6 @@
 # Authors:
 
-- [Rodrigo Carvalho Moutinho](https://twitter.com/rcmoutinho)
+- Rodrigo Carvalho Moutinho [[ Twitter ]](https://twitter.com/rcmoutinho) [[ GitHub ]](https://github.com/rcmoutinho)
 
 # Contributors:
 
