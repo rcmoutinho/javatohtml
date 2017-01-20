@@ -2,7 +2,6 @@ package br.com.rcmoutinho.javatohtml.core.tag;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -36,8 +35,7 @@ public class TableTest {
 		this.tfootToHtml = "<table><tfoot></tfoot></table>";
 		this.trToHtml = "<table><tr></tr></table>";
 
-		this.notSupportedElements = new ArrayList<Class<? extends Element<?>>>(
-				ElementUtils.getAllImplementedElements());
+		this.notSupportedElements = ElementUtils.getAllImplementedElements();
 
 		// removes supported elements
 		this.notSupportedElements.remove(Thead.class);
