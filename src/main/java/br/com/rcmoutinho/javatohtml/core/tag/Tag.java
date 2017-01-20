@@ -19,6 +19,13 @@ import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 public class Tag extends Element<Tag> {
 
 	private String name;
+	
+	/**
+	 * Defines the default tag name to favor unit tests.
+	 */
+	protected Tag() {
+		this.name = "test";
+	}
 
 	/**
 	 * Define the tag name.
