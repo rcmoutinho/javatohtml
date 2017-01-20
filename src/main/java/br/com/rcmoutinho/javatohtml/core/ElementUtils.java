@@ -2,7 +2,6 @@ package br.com.rcmoutinho.javatohtml.core;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import br.com.rcmoutinho.javatohtml.core.tag.A;
@@ -50,8 +49,8 @@ public class ElementUtils {
 	 * @return
 	 */
 	public static List<Class<? extends Element<?>>> getCommonSupportedElements() {
-		List<Class<? extends Element<?>>> commonSupported = new ArrayList<Class<? extends Element<?>>>(ALL_IMPLEMENTED_ELEMENTS);
-		
+		List<Class<? extends Element<?>>> commonSupported = getAllImplementedElements();
+
 		// removing table specific elements
 		commonSupported.remove(Tbody.class);
 		commonSupported.remove(Td.class);
@@ -59,8 +58,8 @@ public class ElementUtils {
 		commonSupported.remove(Th.class);
 		commonSupported.remove(Thead.class);
 		commonSupported.remove(Tr.class);
-		
-		return Collections.unmodifiableList(commonSupported);
+
+		return commonSupported;
 	}
 
 	/**
@@ -69,6 +68,6 @@ public class ElementUtils {
 	 * @return
 	 */
 	public static List<Class<? extends Element<?>>> getAllImplementedElements() {
-		return Collections.unmodifiableList(ALL_IMPLEMENTED_ELEMENTS);
+		return new ArrayList<Class<? extends Element<?>>>(ALL_IMPLEMENTED_ELEMENTS);
 	}
 }
