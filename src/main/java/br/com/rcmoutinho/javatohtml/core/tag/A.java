@@ -41,6 +41,7 @@ public class A extends Element<A> {
 
 		if (this.href != null)
 			map.put("href", this.href);
+		// TODO warn required field
 
 		if (this.hrefLang != null)
 			map.put("hrefLang", this.hrefLang);
