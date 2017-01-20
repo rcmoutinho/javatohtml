@@ -27,27 +27,8 @@ public class ElementTester {
 	 */
 	protected int countUnsupportedTagExceptionToAppend(Element<?> element,
 			List<Class<? extends Element<?>>> classList) {
-		int unsupportedTagCount = 0;
 
-		for (Class<? extends Element<?>> clazz : classList) {
-			try {
-
-				if (Tag.class.equals(clazz))
-					element.append(new Tag("myTag"));
-				else
-					element.append(clazz.newInstance());
-
-				throw new RuntimeException("This tag should be supported: " + clazz);
-				
-			} catch (UnsupportedTagException e) {
-				unsupportedTagCount++;
-
-			} catch (Exception e) {
-				throw new RuntimeException("Unexpected problem", e);
-			}
-		}
-
-		return unsupportedTagCount;
+		return this.countUnsupportedTagException(element, classList, ElementMethod.APPEND);
 	}
 
 	/**
@@ -62,18 +43,40 @@ public class ElementTester {
 	 */
 	protected int countUnsupportedTagExceptionToPrepend(Element<?> element,
 			List<Class<? extends Element<?>>> classList) {
+
+		return this.countUnsupportedTagException(element, classList, ElementMethod.PREPEND);
+	}
+
+	/**
+	 * Counts the {@link UnsupportedTagException} to {@link ElementMethod} on
+	 * {@link Element} according to the list.
+	 * 
+	 * @param element
+	 *            element to test
+	 * @param classList
+	 *            all unsupported classes
+	 * @return
+	 */
+	private int countUnsupportedTagException(Element<?> element, List<Class<? extends Element<?>>> classList,
+			ElementMethod elementMethod) {
+
 		int unsupportedTagCount = 0;
 
 		for (Class<? extends Element<?>> clazz : classList) {
-			try {
 
-				if (Tag.class.equals(clazz))
-					element.prepend(new Tag("myTag"));
-				else
+			try {
+				if (ElementMethod.APPEND == elementMethod) {
+					element.append(clazz.newInstance());
+
+				} else if (ElementMethod.PREPEND == elementMethod) {
 					element.prepend(clazz.newInstance());
 
+				} else {
+					throw new RuntimeException("Test to element's method not supported: " + elementMethod);
+				}
+
 				throw new RuntimeException("This tag should be supported: " + clazz);
-				
+
 			} catch (UnsupportedTagException e) {
 				unsupportedTagCount++;
 
@@ -83,5 +86,17 @@ public class ElementTester {
 		}
 
 		return unsupportedTagCount;
+	}
+
+	/**
+	 * Element's methods to be tested.
+	 * 
+	 * @rcmoutinho
+	 * @author rodrigo.moutinho
+	 * @date 20 de jan de 2017
+	 * @email rcm1989@gmail.com
+	 */
+	private enum ElementMethod {
+		APPEND, PREPEND;
 	}
 }
