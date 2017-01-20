@@ -420,7 +420,7 @@ public abstract class Element<T> {
 			String value = map.get(attr);
 
 			if (StringUtils.isNotBlank(value))
-				attrValues.append(" ").append(attr).append("='").append(value).append("'");
+				attrValues.append(" ").append(attr).append("=\"").append(value).append("\"");
 		}
 
 		return attrValues;
