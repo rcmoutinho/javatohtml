@@ -25,7 +25,7 @@ public class ElementTester {
 	 *            all unsupported classes
 	 * @return
 	 */
-	protected int countUnsupportedTagExceptionToAppend(Element<?> element,
+	public int countUnsupportedTagExceptionToAppend(Element<?> element,
 			List<Class<? extends Element<?>>> classList) {
 
 		return this.countUnsupportedTagException(element, classList, ElementMethod.APPEND);
@@ -41,7 +41,7 @@ public class ElementTester {
 	 *            all unsupported classes
 	 * @return
 	 */
-	protected int countUnsupportedTagExceptionToPrepend(Element<?> element,
+	public int countUnsupportedTagExceptionToPrepend(Element<?> element,
 			List<Class<? extends Element<?>>> classList) {
 
 		return this.countUnsupportedTagException(element, classList, ElementMethod.PREPEND);
