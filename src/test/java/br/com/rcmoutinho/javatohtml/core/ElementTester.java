@@ -1,4 +1,4 @@
-package br.com.rcmoutinho.javatohtml.core.tag;
+package br.com.rcmoutinho.javatohtml.core;
 
 import java.util.List;
 

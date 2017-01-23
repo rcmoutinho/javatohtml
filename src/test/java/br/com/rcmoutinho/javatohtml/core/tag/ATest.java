@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
+import br.com.rcmoutinho.javatohtml.core.ElementTester;
 import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 
 /**
