@@ -38,7 +38,7 @@ public class ElementTestUtil {
 	 *            all supported classes
 	 * @return
 	 */
-	public int countSupportedTagToAppend(Class<? extends Element<?>> elementClass,
+	public static int countSupportedTagToAppend(Class<? extends Element<?>> elementClass,
 			List<Class<? extends Element<?>>> classList) {
 
 		return countSupportedTag(elementClass, classList, ElementMethod.APPEND);
@@ -55,7 +55,7 @@ public class ElementTestUtil {
 	 *            all supported classes
 	 * @return
 	 */
-	public int countSupportedTagToPrepend(Class<? extends Element<?>> elementClass,
+	public static int countSupportedTagToPrepend(Class<? extends Element<?>> elementClass,
 			List<Class<? extends Element<?>>> classList) {
 
 		return countSupportedTag(elementClass, classList, ElementMethod.PREPEND);
@@ -71,9 +71,10 @@ public class ElementTestUtil {
 	 *            all unsupported classes
 	 * @return
 	 */
-	public int countUnsupportedTagExceptionToAppend(Element<?> element, List<Class<? extends Element<?>>> classList) {
+	public static int countUnsupportedTagExceptionToAppend(Element<?> element,
+			List<Class<? extends Element<?>>> classList) {
 
-		return this.countUnsupportedTagException(element, classList, ElementMethod.APPEND);
+		return countUnsupportedTagException(element, classList, ElementMethod.APPEND);
 	}
 
 	/**
@@ -86,35 +87,32 @@ public class ElementTestUtil {
 	 *            all unsupported classes
 	 * @return
 	 */
-	public int countUnsupportedTagExceptionToPrepend(Element<?> element, List<Class<? extends Element<?>>> classList) {
+	public static int countUnsupportedTagExceptionToPrepend(Element<?> element,
+			List<Class<? extends Element<?>>> classList) {
 
-		return this.countUnsupportedTagException(element, classList, ElementMethod.PREPEND);
+		return countUnsupportedTagException(element, classList, ElementMethod.PREPEND);
 	}
 
 	/**
 	 * Tests the {@link Element} to append a {@link String} and generate an
 	 * error if something went wrong.
 	 * 
-	 * @param elementName
-	 *            implementation name
 	 * @param elementClass
 	 *            implementation class
 	 */
-	public void testStringToAppend(String elementName, Class<? extends Element<?>> elementClass) {
-		testString(elementName, elementClass, ElementMethod.APPEND);
+	public static void testStringToAppend(Class<? extends Element<?>> elementClass) {
+		testString(elementClass, ElementMethod.APPEND);
 	}
 
 	/**
 	 * Tests the {@link Element} to prepend a {@link String} and generate an
 	 * error if something went wrong.
 	 * 
-	 * @param elementName
-	 *            implementation name
 	 * @param elementClass
 	 *            implementation class
 	 */
-	public void testStringToPrepend(String elementName, Class<? extends Element<?>> elementClass) {
-		testString(elementName, elementClass, ElementMethod.PREPEND);
+	public static void testStringToPrepend(Class<? extends Element<?>> elementClass) {
+		testString(elementClass, ElementMethod.PREPEND);
 	}
 
 	/**
@@ -130,8 +128,8 @@ public class ElementTestUtil {
 	 *            method to test
 	 * @return
 	 */
-	private int countSupportedTag(Class<? extends Element<?>> elementClass, List<Class<? extends Element<?>>> classList,
-			ElementMethod elementMethod) {
+	private static int countSupportedTag(Class<? extends Element<?>> elementClass,
+			List<Class<? extends Element<?>>> classList, ElementMethod elementMethod) {
 
 		int supportedTagCount = 0;
 
@@ -184,7 +182,7 @@ public class ElementTestUtil {
 	 *            all unsupported classes
 	 * @return
 	 */
-	private int countUnsupportedTagException(Element<?> element, List<Class<? extends Element<?>>> classList,
+	private static int countUnsupportedTagException(Element<?> element, List<Class<? extends Element<?>>> classList,
 			ElementMethod elementMethod) {
 
 		int unsupportedTagCount = 0;
@@ -226,7 +224,7 @@ public class ElementTestUtil {
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 */
-	private Element<?> newInstance(Class<? extends Element<?>> elementClass)
+	private static Element<?> newInstance(Class<? extends Element<?>> elementClass)
 			throws InstantiationException, IllegalAccessException {
 
 		Element<?> element;
@@ -245,12 +243,10 @@ public class ElementTestUtil {
 	 * Tests the {@link Element}, according to {@link ElementMethod}, to add a
 	 * {@link String} and generate an error if something went wrong.
 	 * 
-	 * @param elementName
-	 *            implementation name
 	 * @param elementClass
 	 *            implementation class
 	 */
-	private void testString(String elementName, Class<? extends Element<?>> elementClass, ElementMethod elementMethod) {
+	private static void testString(Class<? extends Element<?>> elementClass, ElementMethod elementMethod) {
 
 		try {
 			String value = "text";
@@ -282,5 +278,8 @@ public class ElementTestUtil {
 		} catch (Exception e) {
 			throw new RuntimeException("Unexpected problem", e);
 		}
+	}
+
+	private ElementTestUtil() {
 	}
 }
