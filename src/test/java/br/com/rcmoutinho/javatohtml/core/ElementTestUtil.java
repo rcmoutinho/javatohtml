@@ -268,10 +268,10 @@ public class ElementTestUtil {
 
 			String expected;
 			if (element.hasEndTag()) {
-				expected = "<" + elementName + ">" + value + "</" + elementName + ">";
+				expected = "<" + element.getName() + ">" + value + "</" + element.getName() + ">";
 
 			} else {
-				expected = "<" + elementName + " />";
+				expected = "<" + element.getName() + " />";
 			}
 
 			String actual = element.toHtml();
