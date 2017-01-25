@@ -1,5 +1,11 @@
 package br.com.rcmoutinho.javatohtml.core.tag;
 
+import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countSupportedTagToAppend;
+import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countSupportedTagToPrepend;
+import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countUnsupportedTagExceptionToAppend;
+import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countUnsupportedTagExceptionToPrepend;
+import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.testStringToAppend;
+import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.testStringToPrepend;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
@@ -8,7 +14,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
-import br.com.rcmoutinho.javatohtml.core.ElementTestUtil;
 import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 
 /**
@@ -21,14 +26,11 @@ import br.com.rcmoutinho.javatohtml.core.ElementUtils;
  */
 public class ATest {
 
-	private ElementTestUtil elementTester;
 	private List<Class<? extends Element<?>>> supportedElements;
 	private List<Class<? extends Element<?>>> notSupportedElements;
 
 	@Before
 	public void beforeTesting() {
-		this.elementTester = new ElementTestUtil();
-
 		this.supportedElements = new A().getSupportedElements();
 
 		this.notSupportedElements = ElementUtils.getAllImplementedElements();
@@ -37,29 +39,29 @@ public class ATest {
 
 	@Test
 	public void checkSupportedElementsToAppend() throws InstantiationException, IllegalAccessException {
-		int supportedTagCount = this.elementTester.countSupportedTagToAppend(A.class, this.supportedElements);
+		int supportedTagCount = countSupportedTagToAppend(A.class, this.supportedElements);
 
 		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	@Test
 	public void checkSupportedElementsToPrepend() throws InstantiationException, IllegalAccessException {
-		int supportedTagCount = this.elementTester.countSupportedTagToPrepend(A.class, this.supportedElements);
+		int supportedTagCount = countSupportedTagToPrepend(A.class, this.supportedElements);
 
 		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	public void checkSupportedStringToAppend() {
-		elementTester.testStringToAppend("a", A.class);
+		testStringToAppend(A.class);
 	}
 
 	public void checkSupportedStringToPrepend() {
-		elementTester.testStringToPrepend("a", A.class);
+		testStringToPrepend(A.class);
 	}
 
 	@Test
 	public void checkUnsupportedElementsToAppend() {
-		int unsupportedTagCount = this.elementTester.countUnsupportedTagExceptionToAppend(new A(),
+		int unsupportedTagCount = countUnsupportedTagExceptionToAppend(new A(),
 				this.notSupportedElements);
 
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
@@ -67,7 +69,7 @@ public class ATest {
 
 	@Test
 	public void checkUnsupportedElementsToPrepend() {
-		int unsupportedTagCount = this.elementTester.countUnsupportedTagExceptionToPrepend(new A(),
+		int unsupportedTagCount = countUnsupportedTagExceptionToPrepend(new A(),
 				this.notSupportedElements);
 
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
