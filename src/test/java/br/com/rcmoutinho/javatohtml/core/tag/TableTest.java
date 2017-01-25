@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
-import br.com.rcmoutinho.javatohtml.core.ElementTester;
+import br.com.rcmoutinho.javatohtml.core.ElementTestUtil;
 import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 import br.com.rcmoutinho.javatohtml.core.exception.UnsupportedTagException;
 
@@ -63,7 +63,7 @@ public class TableTest {
 
 	@Test
 	public void checkUnsupportedElementsToAppend() {
-		int unsupportedTagCount = new ElementTester().countUnsupportedTagExceptionToAppend(new Table(),
+		int unsupportedTagCount = new ElementTestUtil().countUnsupportedTagExceptionToAppend(new Table(),
 				this.notSupportedElements);
 
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
@@ -71,7 +71,7 @@ public class TableTest {
 
 	@Test
 	public void checkUnsupportedElementsToPrepend() {
-		int unsupportedTagCount = new ElementTester().countUnsupportedTagExceptionToPrepend(new Table(),
+		int unsupportedTagCount = new ElementTestUtil().countUnsupportedTagExceptionToPrepend(new Table(),
 				this.notSupportedElements);
 
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());

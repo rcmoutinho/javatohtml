@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.rcmoutinho.javatohtml.core.Element;
-import br.com.rcmoutinho.javatohtml.core.ElementTester;
+import br.com.rcmoutinho.javatohtml.core.ElementTestUtil;
 import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 
 /**
@@ -21,13 +21,13 @@ import br.com.rcmoutinho.javatohtml.core.ElementUtils;
  */
 public class ATest {
 
-	private ElementTester elementTester;
+	private ElementTestUtil elementTester;
 	private List<Class<? extends Element<?>>> supportedElements;
 	private List<Class<? extends Element<?>>> notSupportedElements;
 
 	@Before
 	public void beforeTesting() {
-		this.elementTester = new ElementTester();
+		this.elementTester = new ElementTestUtil();
 
 		this.supportedElements = new A().getSupportedElements();
 

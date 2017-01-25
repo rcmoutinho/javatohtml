@@ -13,7 +13,7 @@ import br.com.rcmoutinho.javatohtml.core.tag.Tag;
  * @date 17 de jan de 2017
  * @email rcm1989@gmail.com
  */
-public class ElementTester {
+public class ElementTestUtil {
 
 	/**
 	 * Tests the {@link Element} to append a {@link String} and generate an
