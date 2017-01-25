@@ -39,7 +39,13 @@ public class ElementUtils {
 			Div.class, Em.class, H1.class, H2.class, H3.class, Hr.class, Img.class, P.class, Span.class, Strong.class,
 			Table.class, Tag.class, Tbody.class, Td.class, Tfoot.class, Th.class, Thead.class, Tr.class);
 
-	private ElementUtils() {
+	/**
+	 * Returns all implemented tags.
+	 * 
+	 * @return
+	 */
+	public static List<Class<? extends Element<?>>> getAllImplementedElements() {
+		return new ArrayList<Class<? extends Element<?>>>(ALL_IMPLEMENTED_ELEMENTS);
 	}
 
 	/**
@@ -62,12 +68,6 @@ public class ElementUtils {
 		return commonSupported;
 	}
 
-	/**
-	 * Returns all implemented tags.
-	 * 
-	 * @return
-	 */
-	public static List<Class<? extends Element<?>>> getAllImplementedElements() {
-		return new ArrayList<Class<? extends Element<?>>>(ALL_IMPLEMENTED_ELEMENTS);
+	private ElementUtils() {
 	}
 }
