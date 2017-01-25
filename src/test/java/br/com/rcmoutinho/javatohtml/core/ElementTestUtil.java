@@ -28,6 +28,40 @@ public class ElementTestUtil {
 	}
 
 	/**
+	 * Counts the supported {@link Element} to append according to the
+	 * {@link Element} list. If something went wrong, generate a clarifying
+	 * error.
+	 * 
+	 * @param elementClass
+	 *            implementation to test
+	 * @param classList
+	 *            all supported classes
+	 * @return
+	 */
+	public int countSupportedTagToAppend(Class<? extends Element<?>> elementClass,
+			List<Class<? extends Element<?>>> classList) {
+
+		return countSupportedTag(elementClass, classList, ElementMethod.APPEND);
+	}
+
+	/**
+	 * Counts the supported {@link Element} to prepend according to the
+	 * {@link Element} list. If something went wrong, generate a clarifying
+	 * error.
+	 * 
+	 * @param elementClass
+	 *            implementation to test
+	 * @param classList
+	 *            all supported classes
+	 * @return
+	 */
+	public int countSupportedTagToPrepend(Class<? extends Element<?>> elementClass,
+			List<Class<? extends Element<?>>> classList) {
+
+		return countSupportedTag(elementClass, classList, ElementMethod.PREPEND);
+	}
+
+	/**
 	 * Counts the {@link UnsupportedTagException} to append on {@link Element}
 	 * according to the list.
 	 * 
@@ -84,6 +118,63 @@ public class ElementTestUtil {
 	}
 
 	/**
+	 * Counts the supported {@link Element} to {@link ElementMethod} according
+	 * to the {@link Element} list. If something went wrong, generate a
+	 * clarifying error.
+	 * 
+	 * @param elementClass
+	 *            implementation to test
+	 * @param classList
+	 *            all supported classes
+	 * @param elementMethod
+	 *            method to test
+	 * @return
+	 */
+	private int countSupportedTag(Class<? extends Element<?>> elementClass, List<Class<? extends Element<?>>> classList,
+			ElementMethod elementMethod) {
+
+		int supportedTagCount = 0;
+
+		for (Class<? extends Element<?>> clazz : classList) {
+
+			try {
+				Element<?> element = newInstance(elementClass);
+				Element<?> newInstance = newInstance(clazz);
+
+				if (ElementMethod.APPEND == elementMethod) {
+					element.append(newInstance);
+
+				} else if (ElementMethod.PREPEND == elementMethod) {
+					element.prepend(newInstance);
+
+				} else {
+					throw new RuntimeException("Test to element's method not supported: " + elementMethod);
+				}
+
+				String expected;
+				if (element.hasEndTag()) {
+					expected = "<" + element.getName() + ">" + newInstance.toHtml() + "</" + element.getName() + ">";
+
+				} else {
+					expected = "<" + element.getName() + " />";
+				}
+
+				String actual = element.toHtml();
+				if (!expected.equals(actual))
+					throw new RuntimeException("HTML not matching. Expected is [" + expected
+							+ "] different from actual [" + actual + "].");
+
+				supportedTagCount++;
+
+			} catch (Exception e) {
+				throw new RuntimeException("Unexpected problem", e);
+			}
+		}
+
+		return supportedTagCount;
+	}
+
+	/**
 	 * Counts the {@link UnsupportedTagException} to {@link ElementMethod} on
 	 * {@link Element} according to the list.
 	 * 
@@ -102,7 +193,7 @@ public class ElementTestUtil {
 
 			try {
 				Element<?> newInstance = newInstance(clazz);
-				
+
 				if (ElementMethod.APPEND == elementMethod) {
 					element.append(newInstance);
 
