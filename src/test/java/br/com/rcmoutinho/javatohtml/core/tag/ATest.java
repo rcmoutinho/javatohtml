@@ -37,26 +37,16 @@ public class ATest {
 
 	@Test
 	public void checkSupportedElementsToAppend() throws InstantiationException, IllegalAccessException {
+		int supportedTagCount = this.elementTester.countSupportedTagToAppend(A.class, this.supportedElements);
 
-		for (Class<? extends Element<?>> clazz : this.supportedElements) {
-			Element<?> element = clazz.newInstance();
-
-			String html = "<a>" + element.toHtml() + "</a>";
-			assertEquals(html, new A().append(element).toHtml());
-		}
-
+		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	@Test
 	public void checkSupportedElementsToPrepend() throws InstantiationException, IllegalAccessException {
+		int supportedTagCount = this.elementTester.countSupportedTagToPrepend(A.class, this.supportedElements);
 
-		for (Class<? extends Element<?>> clazz : this.supportedElements) {
-			Element<?> element = clazz.newInstance();
-
-			String html = "<a>" + element.toHtml() + "</a>";
-			assertEquals(html, new A().prepend(element).toHtml());
-		}
-
+		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	public void checkSupportedStringToAppend() {
