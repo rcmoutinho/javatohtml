@@ -60,11 +60,11 @@ public class ATest {
 	}
 
 	public void checkSupportedStringToAppend() {
-		assertEquals("<a>text</a>", new A().append("text").toHtml());
+		elementTester.testStringToAppend("a", A.class);
 	}
 
 	public void checkSupportedStringToPrepend() {
-		assertEquals("<a>text</a>", new A().prepend("text").toHtml());
+		elementTester.testStringToPrepend("a", A.class);
 	}
 
 	@Test
