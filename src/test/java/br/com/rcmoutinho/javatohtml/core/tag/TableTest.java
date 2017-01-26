@@ -1,5 +1,7 @@
 package br.com.rcmoutinho.javatohtml.core.tag;
 
+import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countSupportedTagToAppend;
+import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countSupportedTagToPrepend;
 import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countUnsupportedTagExceptionToAppend;
 import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countUnsupportedTagExceptionToPrepend;
 import static org.junit.Assert.assertEquals;
@@ -23,58 +25,40 @@ import br.com.rcmoutinho.javatohtml.core.exception.UnsupportedTagException;
  */
 public class TableTest {
 
-	private String theadToHtml;
-	private String tbodyToHtml;
-	private String tfootToHtml;
-	private String trToHtml;
+	private Class<? extends Element<?>> implClass;
+	private List<Class<? extends Element<?>>> supportedElements;
 	private List<Class<? extends Element<?>>> notSupportedElements;
 
 	@Before
 	public void beforeTesting() {
-
-		this.theadToHtml = "<table><thead></thead></table>";
-		this.tbodyToHtml = "<table><tbody></tbody></table>";
-		this.tfootToHtml = "<table><tfoot></tfoot></table>";
-		this.trToHtml = "<table><tr></tr></table>";
+		this.implClass = Table.class;
+		this.supportedElements = new Table().getSupportedElements();
 
 		this.notSupportedElements = ElementUtils.getAllImplementedElements();
-
-		// removes supported elements
-		this.notSupportedElements.remove(Thead.class);
-		this.notSupportedElements.remove(Tbody.class);
-		this.notSupportedElements.remove(Tfoot.class);
-		this.notSupportedElements.remove(Tr.class);
+		this.notSupportedElements.removeAll(this.supportedElements);
 	}
 
 	@Test
 	public void checkSupportedElementsToAppend() {
-		assertEquals(this.theadToHtml, new Table().append(new Thead()).toHtml());
-		assertEquals(this.tbodyToHtml, new Table().append(new Tbody()).toHtml());
-		assertEquals(this.tfootToHtml, new Table().append(new Tfoot()).toHtml());
-		assertEquals(this.trToHtml, new Table().append(new Tr()).toHtml());
+		int supportedTagCount = countSupportedTagToAppend(this.implClass, this.supportedElements);
+		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	@Test
 	public void checkSupportedElementsToPrepend() {
-		assertEquals(this.theadToHtml, new Table().prepend(new Thead()).toHtml());
-		assertEquals(this.tbodyToHtml, new Table().prepend(new Tbody()).toHtml());
-		assertEquals(this.tfootToHtml, new Table().prepend(new Tfoot()).toHtml());
-		assertEquals(this.trToHtml, new Table().prepend(new Tr()).toHtml());
+		int supportedTagCount = countSupportedTagToPrepend(this.implClass, this.supportedElements);
+		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	@Test
 	public void checkUnsupportedElementsToAppend() {
-		int unsupportedTagCount = countUnsupportedTagExceptionToAppend(new Table(),
-				this.notSupportedElements);
-
+		int unsupportedTagCount = countUnsupportedTagExceptionToAppend(this.implClass, this.notSupportedElements);
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
 	}
 
 	@Test
 	public void checkUnsupportedElementsToPrepend() {
-		int unsupportedTagCount = countUnsupportedTagExceptionToPrepend(new Table(),
-				this.notSupportedElements);
-
+		int unsupportedTagCount = countUnsupportedTagExceptionToPrepend(this.implClass, this.notSupportedElements);
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
 	}
 
