@@ -26,11 +26,13 @@ import br.com.rcmoutinho.javatohtml.core.ElementUtils;
  */
 public class ATest {
 
+	private Class<? extends Element<?>> implClass;
 	private List<Class<? extends Element<?>>> supportedElements;
 	private List<Class<? extends Element<?>>> notSupportedElements;
 
 	@Before
 	public void beforeTesting() {
+		this.implClass = A.class;
 		this.supportedElements = new A().getSupportedElements();
 
 		this.notSupportedElements = ElementUtils.getAllImplementedElements();
@@ -39,39 +41,33 @@ public class ATest {
 
 	@Test
 	public void checkSupportedElementsToAppend() throws InstantiationException, IllegalAccessException {
-		int supportedTagCount = countSupportedTagToAppend(A.class, this.supportedElements);
-
+		int supportedTagCount = countSupportedTagToAppend(this.implClass, this.supportedElements);
 		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	@Test
 	public void checkSupportedElementsToPrepend() throws InstantiationException, IllegalAccessException {
-		int supportedTagCount = countSupportedTagToPrepend(A.class, this.supportedElements);
-
+		int supportedTagCount = countSupportedTagToPrepend(this.implClass, this.supportedElements);
 		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	public void checkSupportedStringToAppend() {
-		testStringToAppend(A.class);
+		testStringToAppend(this.implClass);
 	}
 
 	public void checkSupportedStringToPrepend() {
-		testStringToPrepend(A.class);
+		testStringToPrepend(this.implClass);
 	}
 
 	@Test
 	public void checkUnsupportedElementsToAppend() {
-		int unsupportedTagCount = countUnsupportedTagExceptionToAppend(new A(),
-				this.notSupportedElements);
-
+		int unsupportedTagCount = countUnsupportedTagExceptionToAppend(new A(), this.notSupportedElements);
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
 	}
 
 	@Test
 	public void checkUnsupportedElementsToPrepend() {
-		int unsupportedTagCount = countUnsupportedTagExceptionToPrepend(new A(),
-				this.notSupportedElements);
-
+		int unsupportedTagCount = countUnsupportedTagExceptionToPrepend(new A(), this.notSupportedElements);
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
 	}
 
