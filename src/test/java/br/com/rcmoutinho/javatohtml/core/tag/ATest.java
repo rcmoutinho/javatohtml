@@ -51,10 +51,12 @@ public class ATest {
 		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
+	@Test
 	public void checkSupportedStringToAppend() {
 		testStringToAppend(this.implClass);
 	}
 
+	@Test
 	public void checkSupportedStringToPrepend() {
 		testStringToPrepend(this.implClass);
 	}
