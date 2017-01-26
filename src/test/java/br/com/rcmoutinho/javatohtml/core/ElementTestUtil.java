@@ -65,32 +65,32 @@ public class ElementTestUtil {
 	 * Counts the {@link UnsupportedTagException} to append on {@link Element}
 	 * according to the list.
 	 * 
-	 * @param element
-	 *            element to test
+	 * @param elementClass
+	 *            implementation class
 	 * @param classList
 	 *            all unsupported classes
 	 * @return
 	 */
-	public static int countUnsupportedTagExceptionToAppend(Element<?> element,
+	public static int countUnsupportedTagExceptionToAppend(Class<? extends Element<?>> elementClass,
 			List<Class<? extends Element<?>>> classList) {
 
-		return countUnsupportedTagException(element, classList, ElementMethod.APPEND);
+		return countUnsupportedTagException(elementClass, classList, ElementMethod.APPEND);
 	}
 
 	/**
 	 * Counts the {@link UnsupportedTagException} to prepend on {@link Element}
 	 * according to the list.
 	 * 
-	 * @param element
-	 *            element to test
+	 * @param elementClass
+	 *            implementation class
 	 * @param classList
 	 *            all unsupported classes
 	 * @return
 	 */
-	public static int countUnsupportedTagExceptionToPrepend(Element<?> element,
+	public static int countUnsupportedTagExceptionToPrepend(Class<? extends Element<?>> elementClass,
 			List<Class<? extends Element<?>>> classList) {
 
-		return countUnsupportedTagException(element, classList, ElementMethod.PREPEND);
+		return countUnsupportedTagException(elementClass, classList, ElementMethod.PREPEND);
 	}
 
 	/**
@@ -135,32 +135,27 @@ public class ElementTestUtil {
 
 		for (Class<? extends Element<?>> clazz : classList) {
 
-			try {
-				Element<?> element = newInstance(elementClass);
-				Element<?> newInstance = newInstance(clazz);
+			Element<?> element = newInstance(elementClass);
+			Element<?> newInstance = newInstance(clazz);
 
-				if (ElementMethod.APPEND == elementMethod) {
-					element.append(newInstance);
+			if (ElementMethod.APPEND == elementMethod) {
+				element.append(newInstance);
 
-				} else if (ElementMethod.PREPEND == elementMethod) {
-					element.prepend(newInstance);
+			} else if (ElementMethod.PREPEND == elementMethod) {
+				element.prepend(newInstance);
 
-				} else {
-					throw new RuntimeException("Test to element's method not supported: " + elementMethod);
-				}
-
-				String expected = "<" + element.getName() + ">" + newInstance.toHtml() + "</" + element.getName() + ">";
-				String actual = element.toHtml();
-
-				if (!expected.equals(actual))
-					throw new RuntimeException("HTML not matching. Expected is [" + expected
-							+ "] different from actual [" + actual + "].");
-
-				supportedTagCount++;
-
-			} catch (Exception e) {
-				throw new RuntimeException("Unexpected problem", e);
+			} else {
+				throw new RuntimeException("Test to element's method not supported: " + elementMethod);
 			}
+
+			String expected = "<" + element.getName() + ">" + newInstance.toHtml() + "</" + element.getName() + ">";
+			String actual = element.toHtml();
+
+			if (!expected.equals(actual))
+				throw new RuntimeException(
+						"HTML not matching. Expected is [" + expected + "] different from actual [" + actual + "].");
+
+			supportedTagCount++;
 		}
 
 		return supportedTagCount;
@@ -170,16 +165,17 @@ public class ElementTestUtil {
 	 * Counts the {@link UnsupportedTagException} to {@link ElementMethod} on
 	 * {@link Element} according to the list.
 	 * 
-	 * @param element
-	 *            element to test
+	 * @param elementClass
+	 *            element implementation
 	 * @param classList
 	 *            all unsupported classes
 	 * @return
 	 */
-	private static int countUnsupportedTagException(Element<?> element, List<Class<? extends Element<?>>> classList,
-			ElementMethod elementMethod) {
+	private static int countUnsupportedTagException(Class<? extends Element<?>> elementClass,
+			List<Class<? extends Element<?>>> classList, ElementMethod elementMethod) {
 
 		int unsupportedTagCount = 0;
+		Element<?> element = newInstance(elementClass);
 
 		for (Class<? extends Element<?>> clazz : classList) {
 
@@ -200,9 +196,6 @@ public class ElementTestUtil {
 
 			} catch (UnsupportedTagException e) {
 				unsupportedTagCount++;
-
-			} catch (Exception e) {
-				throw new RuntimeException("Unexpected problem", e);
 			}
 		}
 
@@ -215,19 +208,21 @@ public class ElementTestUtil {
 	 * @param elementClass
 	 *            element implementation
 	 * @return
-	 * @throws IllegalAccessException
-	 * @throws InstantiationException
 	 */
-	private static Element<?> newInstance(Class<? extends Element<?>> elementClass)
-			throws InstantiationException, IllegalAccessException {
+	private static Element<?> newInstance(Class<? extends Element<?>> elementClass) {
 
 		Element<?> element;
 
-		if (Tag.class.equals(elementClass)) {
-			element = new Tag("tag"); // no default constructor available
+		try {
+			if (Tag.class.equals(elementClass)) {
+				element = new Tag("tag"); // no default constructor available
 
-		} else {
-			element = elementClass.newInstance();
+			} else {
+				element = elementClass.newInstance();
+			}
+
+		} catch (Exception e) {
+			throw new RuntimeException("Unexpected problem", e);
 		}
 
 		return element;
@@ -242,30 +237,25 @@ public class ElementTestUtil {
 	 */
 	private static void testString(Class<? extends Element<?>> elementClass, ElementMethod elementMethod) {
 
-		try {
-			String value = "text";
-			Element<?> element = newInstance(elementClass);
+		String value = "text";
+		Element<?> element = newInstance(elementClass);
 
-			if (ElementMethod.APPEND == elementMethod) {
-				element.append(value);
+		if (ElementMethod.APPEND == elementMethod) {
+			element.append(value);
 
-			} else if (ElementMethod.PREPEND == elementMethod) {
-				element.prepend(value);
+		} else if (ElementMethod.PREPEND == elementMethod) {
+			element.prepend(value);
 
-			} else {
-				throw new RuntimeException("Test to element's method not supported: " + elementMethod);
-			}
-
-			String expected = "<" + element.getName() + ">" + value + "</" + element.getName() + ">";
-			String actual = element.toHtml();
-
-			if (!expected.equals(actual))
-				throw new RuntimeException(
-						"HTML not matching. Expected is [" + expected + "] different from actual [" + actual + "].");
-
-		} catch (Exception e) {
-			throw new RuntimeException("Unexpected problem", e);
+		} else {
+			throw new RuntimeException("Test to element's method not supported: " + elementMethod);
 		}
+
+		String expected = "<" + element.getName() + ">" + value + "</" + element.getName() + ">";
+		String actual = element.toHtml();
+
+		if (!expected.equals(actual))
+			throw new RuntimeException(
+					"HTML not matching. Expected is [" + expected + "] different from actual [" + actual + "].");
 	}
 
 	private ElementTestUtil() {

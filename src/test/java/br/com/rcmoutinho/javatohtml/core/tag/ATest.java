@@ -40,13 +40,13 @@ public class ATest {
 	}
 
 	@Test
-	public void checkSupportedElementsToAppend() throws InstantiationException, IllegalAccessException {
+	public void checkSupportedElementsToAppend() {
 		int supportedTagCount = countSupportedTagToAppend(this.implClass, this.supportedElements);
 		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
 
 	@Test
-	public void checkSupportedElementsToPrepend() throws InstantiationException, IllegalAccessException {
+	public void checkSupportedElementsToPrepend() {
 		int supportedTagCount = countSupportedTagToPrepend(this.implClass, this.supportedElements);
 		assertEquals(supportedTagCount, this.supportedElements.size());
 	}
@@ -61,13 +61,13 @@ public class ATest {
 
 	@Test
 	public void checkUnsupportedElementsToAppend() {
-		int unsupportedTagCount = countUnsupportedTagExceptionToAppend(new A(), this.notSupportedElements);
+		int unsupportedTagCount = countUnsupportedTagExceptionToAppend(this.implClass, this.notSupportedElements);
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
 	}
 
 	@Test
 	public void checkUnsupportedElementsToPrepend() {
-		int unsupportedTagCount = countUnsupportedTagExceptionToPrepend(new A(), this.notSupportedElements);
+		int unsupportedTagCount = countUnsupportedTagExceptionToPrepend(this.implClass, this.notSupportedElements);
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
 	}
 
