@@ -149,15 +149,9 @@ public class ElementTestUtil {
 					throw new RuntimeException("Test to element's method not supported: " + elementMethod);
 				}
 
-				String expected;
-				if (element.hasEndTag()) {
-					expected = "<" + element.getName() + ">" + newInstance.toHtml() + "</" + element.getName() + ">";
-
-				} else {
-					expected = "<" + element.getName() + " />";
-				}
-
+				String expected = "<" + element.getName() + ">" + newInstance.toHtml() + "</" + element.getName() + ">";
 				String actual = element.toHtml();
+
 				if (!expected.equals(actual))
 					throw new RuntimeException("HTML not matching. Expected is [" + expected
 							+ "] different from actual [" + actual + "].");
@@ -262,15 +256,9 @@ public class ElementTestUtil {
 				throw new RuntimeException("Test to element's method not supported: " + elementMethod);
 			}
 
-			String expected;
-			if (element.hasEndTag()) {
-				expected = "<" + element.getName() + ">" + value + "</" + element.getName() + ">";
-
-			} else {
-				expected = "<" + element.getName() + " />";
-			}
-
+			String expected = "<" + element.getName() + ">" + value + "</" + element.getName() + ">";
 			String actual = element.toHtml();
+
 			if (!expected.equals(actual))
 				throw new RuntimeException(
 						"HTML not matching. Expected is [" + expected + "] different from actual [" + actual + "].");
