@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import br.com.rcmoutinho.javatohtml.core.Element;
 import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 
@@ -19,6 +21,8 @@ import br.com.rcmoutinho.javatohtml.core.ElementUtils;
 public class Tag extends Element<Tag> {
 
 	private String name;
+	private boolean endTag = true;
+	private Map<String, String> customAttr = new LinkedHashMap<String, String>();
 
 	/**
 	 * Define the tag name.
@@ -27,6 +31,10 @@ public class Tag extends Element<Tag> {
 	 *            {@link String}
 	 */
 	public Tag(String name) {
+
+		if (StringUtils.isBlank(name))
+			throw new RuntimeException("This dynamic tag must have a name");
+
 		this.name = name;
 	}
 
@@ -37,7 +45,16 @@ public class Tag extends Element<Tag> {
 
 	@Override
 	protected Map<String, String> getSpecificAttributesMap() {
-		return new LinkedHashMap<String, String>();
+		Map<String, String> customAttr = new LinkedHashMap<String, String>();
+
+		for (String attr : this.customAttr.keySet()) {
+			String value = this.customAttr.get(attr);
+
+			if (StringUtils.isNotBlank(value))
+				customAttr.put(attr, value);
+		}
+
+		return customAttr;
 	}
 
 	@Override
@@ -47,6 +64,62 @@ public class Tag extends Element<Tag> {
 
 	@Override
 	protected Tag getType() {
+		return this;
+	}
+
+	@Override
+	protected boolean hasEndTag() {
+		return this.endTag;
+	}
+
+	/**
+	 * Adds an attribute and your value. If the attribute already exists, the
+	 * value will be overridden.
+	 * 
+	 * @param attr
+	 * @param value
+	 * @return {@link Tag}
+	 */
+	public Tag addAttr(String attr, String value) {
+
+		if (StringUtils.isNotBlank(attr))
+			this.customAttr.put(attr, value);
+
+		return this;
+	}
+
+	/**
+	 * Verifies that the attribute already exists.
+	 * 
+	 * @param attr
+	 * @return {@link Boolean}
+	 */
+	public boolean hasAttr(String attr) {
+		return this.customAttr.get(attr) != null;
+	}
+
+	/**
+	 * Defines this dynamic tag with no end tag.
+	 * 
+	 * @return {@link Tag}
+	 */
+	public Tag noEndTag() {
+		this.endTag = false;
+
+		return this;
+	}
+
+	/**
+	 * Removes the attribute.
+	 * 
+	 * @param attr
+	 * @return
+	 */
+	public Tag removeAttr(String attr) {
+
+		if (StringUtils.isNotBlank(attr) && this.hasAttr(attr))
+			this.customAttr.remove(attr);
+
 		return this;
 	}
 }
