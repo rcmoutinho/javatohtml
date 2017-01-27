@@ -62,13 +62,13 @@ public class Th extends Element<Th> {
 		if (this.abbr != null)
 			map.put("abbr", this.abbr);
 
-		if (this.colspan != null)
+		if (this.colspan != null && this.colspan > 1)
 			map.put("colspan", this.colspan.toString());
 
 		if (this.headers != null)
 			map.put("headers", this.headers);
 
-		if (this.rowspan != null)
+		if (this.rowspan != null && this.rowspan > 1)
 			map.put("rowspan", this.rowspan.toString());
 
 		if (this.scope != null)

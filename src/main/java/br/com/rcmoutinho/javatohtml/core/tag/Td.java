@@ -56,13 +56,13 @@ public class Td extends Element<Td> {
 	protected Map<String, String> getSpecificAttributesMap() {
 		Map<String, String> map = new LinkedHashMap<String, String>();
 
-		if (this.colspan != null)
+		if (this.colspan != null && this.colspan > 1)
 			map.put("colspan", this.colspan.toString());
 
 		if (this.headers != null)
 			map.put("headers", this.headers);
 
-		if (this.rowspan != null)
+		if (this.rowspan != null && this.rowspan > 1)
 			map.put("rowspan", this.rowspan.toString());
 
 		return map;
