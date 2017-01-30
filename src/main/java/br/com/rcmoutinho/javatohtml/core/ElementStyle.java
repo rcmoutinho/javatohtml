@@ -38,10 +38,9 @@ public class ElementStyle {
 					String[] array = styleValue.split(":");
 
 					if (array.length != 2) {
-						System.out.println("CSS Style invalido! [ " + styleValue + " ]");
-
+						System.out.println("Invalid CSS Style! [ " + styleValue + " ]");
 					} else {
-						this.style.put(array[0], array[1]);
+						this.add(array[0], array[1]);
 					}
 				}
 			}
@@ -58,9 +57,22 @@ public class ElementStyle {
 	 * @return {@link ElementStyle}
 	 */
 	public ElementStyle add(String property, String value) {
+		String msg = "CSS Style %s is empty! Property: ['" + property + "'] Value: ['" + value + "']";
 
-		if (StringUtils.isNotBlank(property))
+		if (StringUtils.isBlank(property)) {
+			System.out.println(String.format(msg, "property"));
+
+		} else if (StringUtils.isBlank(value)) {
+			System.out.println(String.format(msg, "value"));
+
+		} else {
+
+			// avoid empty spaces and invalid characters
+			property = property.trim().replace(":", "");
+			value = value.trim().replace(";", "");
+
 			this.style.put(property, value);
+		}
 
 		return this;
 	}
