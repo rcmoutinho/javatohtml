@@ -29,6 +29,9 @@ public class ElementDataAttributes {
 	 */
 	public ElementDataAttributes add(String attr, String value) {
 
+		// avoid null values
+		value = value == null ? "" : value;
+
 		if (StringUtils.isNotBlank(attr))
 			this.dataAttr.put(attr, value);
 
