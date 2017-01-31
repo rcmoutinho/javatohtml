@@ -38,7 +38,7 @@ public class ElementStyle {
 					String[] array = styleValue.split(":");
 
 					if (array.length != 2) {
-						System.out.println("Invalid CSS Style! [ " + styleValue + " ]");
+						System.out.println("Invalid CSS Style! [ " + styleValue + " ]"); // TODO log here
 					} else {
 						this.add(array[0], array[1]);
 					}
@@ -60,10 +60,10 @@ public class ElementStyle {
 		String msg = "CSS Style %s is empty! Property: ['" + property + "'] Value: ['" + value + "']";
 
 		if (StringUtils.isBlank(property)) {
-			System.out.println(String.format(msg, "property"));
+			System.out.println(String.format(msg, "property")); // TODO log here
 
 		} else if (StringUtils.isBlank(value)) {
-			System.out.println(String.format(msg, "value"));
+			System.out.println(String.format(msg, "value")); // TODO log here
 
 		} else {
 
