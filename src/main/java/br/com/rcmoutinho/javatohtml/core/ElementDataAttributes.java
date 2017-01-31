@@ -39,6 +39,16 @@ public class ElementDataAttributes {
 	}
 
 	/**
+	 * Gets the value of the attribute, if exists.
+	 * 
+	 * @param attr
+	 * @return {@link String}
+	 */
+	public String get(String attr) {
+		return this.dataAttr.get(attr);
+	}
+
+	/**
 	 * Gets all data-* attributes.
 	 * 
 	 * @return {@link Map}
