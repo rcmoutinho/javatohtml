@@ -28,12 +28,24 @@ public class ElementDataAttributes {
 	 * @return {@link ElementDataAttributes}
 	 */
 	public ElementDataAttributes add(String attr, String value) {
+		String parametersToLog = "Attr: ['" + attr + "'] Value: ['" + value + "']";
 
-		// avoid null values
-		value = value == null ? "" : value;
+		if (StringUtils.isNotBlank(attr)) {
 
-		if (StringUtils.isNotBlank(attr))
+			// avoid null values
+			if (value == null) {
+				value = "";
+
+				// TODO log here
+				System.out.println("Invalid value fixed to an empty String. " + parametersToLog);
+			}
+
 			this.dataAttr.put(attr, value);
+
+		} else {
+			// TODO log here
+			System.out.println("Invalid attr! " + parametersToLog);
+		}
 
 		return this;
 	}
@@ -90,10 +102,7 @@ public class ElementDataAttributes {
 	 * @return
 	 */
 	public ElementDataAttributes remove(String attr) {
-
-		if (StringUtils.isNotBlank(attr) && this.has(attr))
-			this.dataAttr.remove(attr);
-
+		this.dataAttr.remove(attr);
 		return this;
 	}
 }
