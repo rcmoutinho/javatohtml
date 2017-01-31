@@ -1,6 +1,7 @@
 package br.com.rcmoutinho.javatohtml.core;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -24,13 +25,41 @@ public class ElementDataAttributesTest {
 	}
 
 	@Test
-	public void checkAddedValue() {
+	public void checkAddingNullAttr() {
+		this.elementDataAttributes.add(null, null);
+		assertEquals(0, this.elementDataAttributes.getAttributesMap().size());
+	}
 
+	@Test
+	public void checkAddingAttrAndValue() {
 		this.elementDataAttributes.add("test1", "value1");
 
 		assertTrue(this.elementDataAttributes.has("test1"));
 		assertEquals("value1", this.elementDataAttributes.get("test1"));
+		assertEquals(1, this.elementDataAttributes.getAttributesMap().size());
+	}
 
+	@Test
+	public void fixingNullAttrValue() {
+		this.elementDataAttributes.add("test", null);
+
+		assertTrue(this.elementDataAttributes.has("test"));
+		assertEquals("", this.elementDataAttributes.get("test"));
+		assertEquals(1, this.elementDataAttributes.getAttributesMap().size());
+	}
+
+	@Test
+	public void checkNonExistingAttr() {
+		assertFalse(this.elementDataAttributes.has(null));
+	}
+
+	@Test
+	public void checkRemovingNonExistingAttr() {
+		
+		this.elementDataAttributes.add("test1", "value1");
+		assertEquals(1, this.elementDataAttributes.getAttributesMap().size());
+		
+		this.elementDataAttributes.remove(null);
 		assertEquals(1, this.elementDataAttributes.getAttributesMap().size());
 	}
 
