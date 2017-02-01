@@ -7,6 +7,8 @@ import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.countUnsupported
 import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.testStringToAppend;
 import static br.com.rcmoutinho.javatohtml.core.ElementTestUtil.testStringToPrepend;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -37,6 +39,11 @@ public class TagTest {
 
 		this.notSupportedElements = ElementUtils.getAllImplementedElements();
 		this.notSupportedElements.removeAll(this.supportedElements);
+	}
+
+	@Test
+	public void checkNonExistingAttr() {
+		assertFalse(new Tag("tag").hasAttr(null));
 	}
 
 	@Test
@@ -76,6 +83,11 @@ public class TagTest {
 	@Test
 	public void customAttrsBuildedInOrder() {
 		Tag tag = new Tag("tag").attr("attr1", "value1").attr("attr2", "value2").attr("attr3", "value3");
+		
+		assertTrue(tag.hasAttr("attr1"));
+		assertTrue(tag.hasAttr("attr2"));
+		assertTrue(tag.hasAttr("attr3"));
+		
 		assertEquals("<tag attr1=\"value1\" attr2=\"value2\" attr3=\"value3\"></tag>", tag.toHtml());
 	}
 
@@ -105,9 +117,11 @@ public class TagTest {
 		Tag tag = new Tag("tag");
 
 		tag.attr("attr", "value");
+		assertTrue(tag.hasAttr("attr"));
 		assertEquals("<tag attr=\"value\"></tag>", tag.toHtml());
 
 		tag.removeAttr("attr");
+		assertFalse(tag.hasAttr("attr"));
 		assertEquals("<tag></tag>", tag.toHtml());
 	}
 }
