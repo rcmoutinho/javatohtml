@@ -112,10 +112,7 @@ public class ElementStyle {
 	 * @return {@link ElementStyle}
 	 */
 	public ElementStyle remove(String property) {
-
-		if (StringUtils.isNotBlank(property) && this.style.get(property) != null)
-			this.style.remove(property);
-
+		this.style.remove(property);
 		return this;
 	}
 }
