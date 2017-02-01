@@ -78,7 +78,7 @@ public class ElementStyle {
 	}
 
 	/**
-	 * Gets the value of the attribute, if exists.
+	 * Gets the value of the property, if exists.
 	 * 
 	 * @param property
 	 * @return {@link String}
@@ -107,7 +107,7 @@ public class ElementStyle {
 	}
 
 	/**
-	 * Verifies that the attribute already exists.
+	 * Verifies that the property already exists.
 	 * 
 	 * @param property
 	 * @return {@link Boolean}
