@@ -32,16 +32,13 @@ public class ElementStyle {
 		if (StringUtils.isNotBlank(style)) {
 
 			for (String styleValue : style.split(";")) {
-				styleValue = styleValue.trim();
+				String[] array = styleValue.trim().split(":");
 
-				if (StringUtils.isNotBlank(styleValue)) {
-					String[] array = styleValue.split(":");
-
-					if (array.length != 2) {
-						System.out.println("Invalid CSS Style! [ " + styleValue + " ]"); // TODO log here
-					} else {
-						this.add(array[0], array[1]);
-					}
+				if (array.length != 2) {
+					// TODO log here
+					System.out.println("Invalid CSS Style! [ " + styleValue + " ]");
+				} else {
+					this.add(array[0], array[1]);
 				}
 			}
 		}
