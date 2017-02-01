@@ -27,6 +27,7 @@ public class ElementStyleTest {
 	public void emptyStyleEnteringAndRemovingValues() {
 
 		this.elementStyle.add("margin", "2px");
+		assertTrue(this.elementStyle.has("margin"));
 		assertEquals("margin: 2px;", this.elementStyle.getValues());
 
 		this.elementStyle.remove("margin");
@@ -50,6 +51,11 @@ public class ElementStyleTest {
 		this.elementStyle.add(null, "value");
 
 		assertTrue(this.elementStyle.isEmpty());
+	}
+	
+	@Test
+	public void removingNullValue() {
+		this.elementStyle.remove(null);
 	}
 
 	@Test
