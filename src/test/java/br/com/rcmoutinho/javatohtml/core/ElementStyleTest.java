@@ -1,6 +1,8 @@
 package br.com.rcmoutinho.javatohtml.core;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -24,10 +26,25 @@ public class ElementStyleTest {
 	}
 
 	@Test
+	public void checkNonExistingProperty() {
+		assertFalse(this.elementStyle.has(null));
+		assertFalse(this.elementStyle.has(""));
+		assertFalse(this.elementStyle.has("prop"));
+	}
+
+	@Test
+	public void checkNonExistingValue() {
+		assertNull(this.elementStyle.get(null));
+		assertNull(this.elementStyle.get(""));
+		assertNull(this.elementStyle.get("prop"));
+	}
+
+	@Test
 	public void emptyStyleEnteringAndRemovingValues() {
 
 		this.elementStyle.add("margin", "2px");
 		assertTrue(this.elementStyle.has("margin"));
+		assertEquals("2px", this.elementStyle.get("margin"));
 		assertEquals("margin: 2px;", this.elementStyle.getValues());
 
 		this.elementStyle.remove("margin");
@@ -37,6 +54,10 @@ public class ElementStyleTest {
 	@Test
 	public void emptyStyleEnteringWrongValues() {
 
+		this.elementStyle.add(null);
+		this.elementStyle.add("");
+		this.elementStyle.add(";;;");
+		this.elementStyle.add("prop;value;");
 		this.elementStyle.add("prop value");
 		this.elementStyle.add("prop:");
 		this.elementStyle.add("value");
@@ -52,11 +73,6 @@ public class ElementStyleTest {
 
 		assertTrue(this.elementStyle.isEmpty());
 	}
-	
-	@Test
-	public void removingNullValue() {
-		this.elementStyle.remove(null);
-	}
 
 	@Test
 	public void testLongStyleValues() {
@@ -65,6 +81,11 @@ public class ElementStyleTest {
 		this.elementStyle.add(values);
 
 		assertEquals(values, this.elementStyle.getValues());
+	}
+
+	@Test
+	public void testRemovingNullValue() {
+		this.elementStyle.remove(null);
 	}
 
 	@Test
@@ -77,10 +98,10 @@ public class ElementStyleTest {
 		String style = "border: 1px solid #000; float: left; margin: 2px;";
 		assertEquals(style, this.elementStyle.getValues());
 	}
-	
+
 	@Test
 	public void testSimpleStyleWithInvalidCharacters() {
-		
+
 		this.elementStyle.add("margin:", "2px;");
 		assertEquals("margin: 2px;", this.elementStyle.getValues());
 	}
