@@ -78,6 +78,16 @@ public class ElementStyle {
 	}
 
 	/**
+	 * Gets the value of the attribute, if exists.
+	 * 
+	 * @param property
+	 * @return {@link String}
+	 */
+	public String get(String property) {
+		return this.style.get(property);
+	}
+
+	/**
 	 * Specifies an inline CSS style for an element.
 	 * 
 	 * @return {@link String}
@@ -94,6 +104,16 @@ public class ElementStyle {
 		}
 
 		return values.toString();
+	}
+
+	/**
+	 * Verifies that the attribute already exists.
+	 * 
+	 * @param property
+	 * @return {@link Boolean}
+	 */
+	public boolean has(String property) {
+		return this.style.get(property) != null;
 	}
 
 	/**
