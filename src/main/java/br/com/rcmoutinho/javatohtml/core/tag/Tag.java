@@ -116,10 +116,7 @@ public class Tag extends Element<Tag> {
 	 * @return
 	 */
 	public Tag removeAttr(String attr) {
-
-		if (StringUtils.isNotBlank(attr) && this.hasAttr(attr))
-			this.customAttr.remove(attr);
-
+		this.customAttr.remove(attr);
 		return this;
 	}
 }
