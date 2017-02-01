@@ -75,7 +75,7 @@ public class TagTest {
 
 	@Test
 	public void customAttrsBuildedInOrder() {
-		Tag tag = new Tag("tag").addAttr("attr1", "value1").addAttr("attr2", "value2").addAttr("attr3", "value3");
+		Tag tag = new Tag("tag").attr("attr1", "value1").attr("attr2", "value2").attr("attr3", "value3");
 		assertEquals("<tag attr1=\"value1\" attr2=\"value2\" attr3=\"value3\"></tag>", tag.toHtml());
 	}
 
@@ -86,7 +86,7 @@ public class TagTest {
 
 	@Test
 	public void emptyCustomAttrsGenerateSimpleTag() {
-		Tag tag = new Tag("tag").addAttr(null, null).addAttr("", null).addAttr("attr", null).addAttr("attr", "");
+		Tag tag = new Tag("tag").attr(null, null).attr("", null).attr("attr", null).attr("attr", "");
 		assertEquals("<tag></tag>", tag.toHtml());
 	}
 
@@ -104,7 +104,7 @@ public class TagTest {
 	public void simpleTagRemovingPreviouslyAddedAttribute() {
 		Tag tag = new Tag("tag");
 
-		tag.addAttr("attr", "value");
+		tag.attr("attr", "value");
 		assertEquals("<tag attr=\"value\"></tag>", tag.toHtml());
 
 		tag.removeAttr("attr");

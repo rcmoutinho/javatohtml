@@ -80,7 +80,7 @@ public class Tag extends Element<Tag> {
 	 * @param value
 	 * @return {@link Tag}
 	 */
-	public Tag addAttr(String attr, String value) {
+	public Tag attr(String attr, String value) {
 
 		if (StringUtils.isNotBlank(attr))
 			this.customAttr.put(attr, value);
