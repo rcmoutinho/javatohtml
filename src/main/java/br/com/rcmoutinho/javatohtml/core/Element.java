@@ -160,7 +160,7 @@ public abstract class Element<T> {
 	 */
 	public T classCss(String... classCss) {
 
-		if (classCss.length > 0) {
+		if (classCss != null && classCss.length > 0) {
 			for (String value : classCss) {
 				this.elementClass.add(value);
 			}
