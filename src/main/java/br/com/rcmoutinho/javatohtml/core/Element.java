@@ -137,7 +137,7 @@ public abstract class Element<T> {
 	public T appendTo(Element<?> element) {
 
 		if (element != null)
-			element.values.add(this);
+			element.append(this);
 
 		return this.type;
 	}
@@ -273,7 +273,7 @@ public abstract class Element<T> {
 	public T prependTo(Element<?> element) {
 
 		if (element != null)
-			element.values.add(this);
+			element.prepend(this);
 
 		return this.type;
 	}
