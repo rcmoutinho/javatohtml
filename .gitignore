@@ -16,7 +16,7 @@ target/
 *.jar
 
 # ignora pasta de exemplos
-src/main/java/br/com/rcmoutinho/javatohtml/examples/
+src/main/java/br/com/javatohtml/examples/
 
 # documentação e arquivos locais do projeto
 docs/
