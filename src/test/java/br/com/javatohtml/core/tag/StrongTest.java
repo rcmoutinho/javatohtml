@@ -72,4 +72,10 @@ public class StrongTest {
 		int unsupportedTagCount = countUnsupportedTagExceptionToPrepend(this.implClass, this.notSupportedElements);
 		assertEquals(unsupportedTagCount, this.notSupportedElements.size());
 	}
+	
+	@Test
+	public void strongWithText() {
+		Strong strong = new Strong("text");
+		assertEquals("<strong>text</strong>", strong.toHtml());
+	}
 }
