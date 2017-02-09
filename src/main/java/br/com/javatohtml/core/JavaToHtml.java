@@ -68,6 +68,16 @@ public class JavaToHtml {
 	}
 
 	/**
+	 * Creates {@link Em} element.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static Em em(String value) {
+		return new Em().append(value);
+	}
+
+	/**
 	 * Creates {@link H1} element.
 	 * 
 	 * @return
@@ -131,7 +141,7 @@ public class JavaToHtml {
 	}
 
 	/**
-	 * Creates {@link Strong} element.
+	 * Creates {@link Strong} with a {@link String}.
 	 * 
 	 * @return
 	 */
@@ -143,7 +153,6 @@ public class JavaToHtml {
 	 * Creates {@link Strong} element.
 	 * 
 	 * @param value
-	 *            {@link String}
 	 * @return
 	 */
 	public static Strong strong(String value) {
@@ -189,10 +198,19 @@ public class JavaToHtml {
 	}
 
 	/**
-	 * Creates {@link Td} element.
+	 * Creates a {@link Td} with an {@link Element}.
+	 * 
+	 * @param element
+	 * @return
+	 */
+	public static Td td(Element<?> element) {
+		return new Td().append(element);
+	}
+
+	/**
+	 * Creates {@link Td} with a {@link String}.
 	 * 
 	 * @param value
-	 *            {@link String}
 	 * @return
 	 */
 	public static Td td(String value) {
@@ -218,10 +236,19 @@ public class JavaToHtml {
 	}
 
 	/**
-	 * Creates {@link Th} element.
+	 * Creates a {@link Th} with an {@link Element}.
+	 * 
+	 * @param element
+	 * @return
+	 */
+	public static Th th(Element<?> element) {
+		return new Th().append(element);
+	}
+
+	/**
+	 * Creates {@link Th} with a {@link String}.
 	 * 
 	 * @param value
-	 *            {@link String}
 	 * @return
 	 */
 	public static Th th(String value) {
