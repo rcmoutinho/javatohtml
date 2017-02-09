@@ -127,7 +127,7 @@
 				<version>${jacoco.version}</version>
 				<configuration>
 					<excludes>
-						<exclude>br/com/rcmoutinho/javatohtml/examples/**/*</exclude>
+						<exclude>br/com/javatohtml/examples/**/*</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
