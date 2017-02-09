@@ -84,16 +84,16 @@ public class TdTest {
 		Td td = new Td().colspan(2).headers("#").rowspan(2);
 		assertEquals("<td colspan=\"2\" headers=\"#\" rowspan=\"2\"></td>", td.toHtml());
 	}
-	
+
 	@Test
 	public void textWith2RowsAnd3Columns() {
-		Td td = new Td("text").rowspan(2).colspan(3);
+		Td td = new Td().append("text").rowspan(2).colspan(3);
 		assertEquals("<td colspan=\"3\" rowspan=\"2\">text</td>", td.toHtml());
 	}
-	
+
 	@Test
 	public void withSpan() {
-		Td td = new Td(new Span());
+		Td td = new Td().append(new Span());
 		assertEquals("<td><span></span></td>", td.toHtml());
 	}
 }

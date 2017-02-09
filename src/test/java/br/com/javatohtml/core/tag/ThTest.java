@@ -88,13 +88,13 @@ public class ThTest {
 
 	@Test
 	public void textWith3RowsAnd2Columns() {
-		Th th = new Th("text").rowspan(3).colspan(2);
+		Th th = new Th().append("text").rowspan(3).colspan(2);
 		assertEquals("<th colspan=\"2\" rowspan=\"3\">text</th>", th.toHtml());
 	}
-	
+
 	@Test
 	public void withSpan() {
-		Th th = new Th(new Span());
+		Th th = new Th().append(new Span());
 		assertEquals("<th><span></span></th>", th.toHtml());
 	}
 }

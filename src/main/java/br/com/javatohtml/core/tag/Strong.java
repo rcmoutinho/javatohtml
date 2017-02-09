@@ -19,21 +19,6 @@ import br.com.javatohtml.core.Element;
  */
 public class Strong extends Element<Strong> {
 
-	/**
-	 * Creates the {@link Strong} element.
-	 */
-	public Strong() {
-	}
-
-	/**
-	 * Creates a {@link Strong} with a {@link String}.
-	 * 
-	 * @param value
-	 */
-	public Strong(String value) {
-		this.append(value);
-	}
-
 	@Override
 	protected String getName() {
 		return "strong";

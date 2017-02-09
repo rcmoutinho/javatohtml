@@ -26,30 +26,6 @@ public class Th extends Element<Th> {
 	private String scope;
 	private String sorted;
 
-	/**
-	 * Creates the {@link Th} element.
-	 */
-	public Th() {
-	}
-
-	/**
-	 * Creates a {@link Th} with an {@link Element}.
-	 * 
-	 * @param element
-	 */
-	public Th(Element<?> element) {
-		this.append(element);
-	}
-
-	/**
-	 * Creates a {@link Th} with a {@link String}.
-	 * 
-	 * @param value
-	 */
-	public Th(String value) {
-		this.append(value);
-	}
-
 	@Override
 	protected String getName() {
 		return "th";

@@ -23,30 +23,6 @@ public class Td extends Element<Td> {
 	private String headers;
 	private Integer rowspan;
 
-	/**
-	 * Creates the {@link Td} element.
-	 */
-	public Td() {
-	}
-
-	/**
-	 * Creates a {@link Td} with an {@link Element}.
-	 * 
-	 * @param element
-	 */
-	public Td(Element<?> element) {
-		this.append(element);
-	}
-
-	/**
-	 * Creates a {@link Td} with a {@link String}.
-	 * 
-	 * @param value
-	 */
-	public Td(String value) {
-		this.append(value);
-	}
-
 	@Override
 	protected String getName() {
 		return "td";
