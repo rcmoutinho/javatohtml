@@ -1,4 +1,25 @@
-package br.com.javatohtml.core.tag;
+package br.com.javatohtml.core;
+
+import br.com.javatohtml.core.tag.A;
+import br.com.javatohtml.core.tag.Br;
+import br.com.javatohtml.core.tag.Div;
+import br.com.javatohtml.core.tag.Em;
+import br.com.javatohtml.core.tag.H1;
+import br.com.javatohtml.core.tag.H2;
+import br.com.javatohtml.core.tag.H3;
+import br.com.javatohtml.core.tag.Hr;
+import br.com.javatohtml.core.tag.Img;
+import br.com.javatohtml.core.tag.P;
+import br.com.javatohtml.core.tag.Span;
+import br.com.javatohtml.core.tag.Strong;
+import br.com.javatohtml.core.tag.Table;
+import br.com.javatohtml.core.tag.Tag;
+import br.com.javatohtml.core.tag.Tbody;
+import br.com.javatohtml.core.tag.Td;
+import br.com.javatohtml.core.tag.Tfoot;
+import br.com.javatohtml.core.tag.Th;
+import br.com.javatohtml.core.tag.Thead;
+import br.com.javatohtml.core.tag.Tr;
 
 /**
  * Helps easy creation of tags.
