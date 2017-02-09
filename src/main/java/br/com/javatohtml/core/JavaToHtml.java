@@ -132,6 +132,16 @@ public class JavaToHtml {
 	}
 
 	/**
+	 * Creates {@link P} element.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static P p(String value) {
+		return new P().append(value);
+	}
+
+	/**
 	 * Creates {@link Span} element.
 	 * 
 	 * @return
