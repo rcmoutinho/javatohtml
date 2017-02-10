@@ -39,16 +39,19 @@ public class JavaToHtmlTest {
 	@Test
 	public void testCreatingH1() {
 		assertEquals("<h1></h1>", h1().toHtml());
+		assertEquals("<h1>text</h1>", h1("text").toHtml());
 	}
 
 	@Test
 	public void testCreatingh2() {
 		assertEquals("<h2></h2>", h2().toHtml());
+		assertEquals("<h2>text</h2>", h2("text").toHtml());
 	}
 
 	@Test
 	public void testCreatingh3() {
 		assertEquals("<h3></h3>", h3().toHtml());
+		assertEquals("<h3>text</h3>", h3("text").toHtml());
 	}
 
 	@Test

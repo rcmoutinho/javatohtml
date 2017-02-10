@@ -68,7 +68,7 @@ public class JavaToHtml {
 	}
 
 	/**
-	 * Creates {@link Em} element.
+	 * Creates {@link Em} with a {@link String}.
 	 * 
 	 * @param value
 	 * @return
@@ -87,6 +87,16 @@ public class JavaToHtml {
 	}
 
 	/**
+	 * Creates {@link H1} with a {@link String}.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static H1 h1(String value) {
+		return new H1().append(value);
+	}
+
+	/**
 	 * Creates {@link H2} element.
 	 * 
 	 * @return
@@ -96,12 +106,32 @@ public class JavaToHtml {
 	}
 
 	/**
+	 * Creates {@link H2} with a {@link String}.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static H2 h2(String value) {
+		return new H2().append(value);
+	}
+
+	/**
 	 * Creates {@link H3} element.
 	 * 
 	 * @return
 	 */
 	public static H3 h3() {
 		return new H3();
+	}
+
+	/**
+	 * Creates {@link H3} with a {@link String}.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static H3 h3(String value) {
+		return new H3().append(value);
 	}
 
 	/**
