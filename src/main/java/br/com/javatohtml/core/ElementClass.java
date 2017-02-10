@@ -27,8 +27,17 @@ public class ElementClass {
 	 */
 	public ElementClass add(String clazz) {
 
-		if (StringUtils.isNotBlank(clazz) && !this.has(clazz))
-			this.classes.add(clazz);
+		if (StringUtils.isNotBlank(clazz)) {
+
+			// avoiding and fixing multiple classes
+			String[] arrayOfClass = clazz.trim().split(" ");
+
+			for (String value : arrayOfClass) {
+
+				if (StringUtils.isNotBlank(value) && !this.has(value))
+					this.classes.add(value);
+			}
+		}
 
 		return this;
 	}

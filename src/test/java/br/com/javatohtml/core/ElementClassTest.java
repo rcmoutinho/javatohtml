@@ -59,6 +59,15 @@ public class ElementClassTest {
 		assertFalse(this.elementClass.isEmpty());
 		assertEquals("test test2", this.elementClass.getValues());
 	}
+	
+	@Test
+	public void checkAddingMultipleClasses() {
+		this.elementClass.add("test1 test2");
+		this.elementClass.add(" test2   test3 ");
+		this.elementClass.add("test1 test2 test3     test4");
+		assertFalse(this.elementClass.isEmpty());
+		assertEquals("test1 test2 test3 test4", this.elementClass.getValues());
+	}
 
 	@Test
 	public void checkAddingNull() {
