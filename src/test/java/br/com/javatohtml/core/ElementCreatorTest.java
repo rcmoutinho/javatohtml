@@ -1,19 +1,19 @@
 package br.com.javatohtml.core;
 
-import static br.com.javatohtml.core.JavaToHtml.*;
+import static br.com.javatohtml.core.ElementCreator.*;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
- * Unit test for {@link JavaToHtml}.
+ * Unit test for {@link ElementCreator}.
  * 
  * @rcmoutinho
  * @author rodrigo.moutinho
  * @date 8 de fev de 2017
  * @email rcm1989@gmail.com
  */
-public class JavaToHtmlTest {
+public class ElementCreatorTest {
 
 	@Test
 	public void testCreatingA() {

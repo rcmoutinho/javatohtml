@@ -29,7 +29,7 @@ import br.com.javatohtml.core.tag.Tr;
  * @date 8 de fev de 2017
  * @email rcm1989@gmail.com
  */
-public class JavaToHtml {
+public class ElementCreator {
 
 	/**
 	 * Creates {@link A} element.
@@ -313,6 +313,6 @@ public class JavaToHtml {
 		return new Tr();
 	}
 
-	private JavaToHtml() {
+	private ElementCreator() {
 	}
 }
