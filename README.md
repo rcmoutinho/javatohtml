@@ -1,5 +1,5 @@
 # JAVA to HTML
-Write **JAVA** code and get **HTML** without writing unreadable big *String*. Create report or email models easily. All implementation focus on HTML5 features but it's possible to create any other attribute (older or not implemented yet) if it's necessary.
+Write **JAVA** code and get **HTML** without writing unreadable big *String*. Create report or email models easily. All implementation focus on HTML5 features but it's possible to create any other attribute/element (older or not implemented yet) if it's necessary.
 
 ## Code Example
 
