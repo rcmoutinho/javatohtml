@@ -60,6 +60,16 @@ tag("center").append("bye old tag").toHtml();
 
 **Note:** there is no intentions to compete with template engines, only build understandable and good looking code.
 
+## Next Goals
+* Create feature to translate simple mapped css classes on styles making easier to modify, understand and maintain the code
+* Support the main tags: \<html>, \<head>, \<body>, \<link> and \<script>.
+* Support new HTML5 tags like \<main>, \<article>, etc
+* Create more examples of Email and Report templating
+* Support other HTML5 tags
+
+## API Reference and Unit Tests
+You can run **mvn clean verify** to execute all tests and check the code quality. Thereby the site will be generated with the source and test API Reference, test converage, etc.
+
 ## Motivation
 After years developing complex reports on HTML format and email models, I've decided to create an API that minimally respect W3C docs to compile and transform JAVA code into HTML.
 
