@@ -15,8 +15,8 @@ target/
 *.class
 *.jar
 
-# ignora pasta de exemplos
-src/main/java/br/com/javatohtml/examples/
+# ignore generated examples
+src/main/java/br/com/javatohtml/examples/**/*.html
 
-# documentação e arquivos locais do projeto
+# ignore local documentation files
 docs/
