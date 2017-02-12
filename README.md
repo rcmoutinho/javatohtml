@@ -44,6 +44,14 @@ Just works:
 <dog breed="German Shepherd" />
 ```
 
+An old HTML tag that is not supported anymore by HTML5:
+```JAVA
+tag("center").append("bye old tag").toHtml();
+```
+```HTML
+<center>bye old tag</center>
+```
+
 ## Ways to enjoy JavaToHtml API
 * Take advantage of a compiled language to build HTML without weird bugs hard to find and fix
 * Create email templates dynamically on a efficient way
