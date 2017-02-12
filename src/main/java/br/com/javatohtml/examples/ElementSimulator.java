@@ -60,6 +60,17 @@ public class ElementSimulator {
 
 		return table;
 	}
+	
+	/**
+	 * New tag with new attributes.
+	 * <br>
+	 * &lt;dog breed="German Shepherd" /&gt;
+	 * 
+	 * @return
+	 */
+	public Element<?> createCrazyElement(){
+		return tag("dog").attr("breed", "German Shepherd").noEndTag();
+	}
 
 	public static void main(String[] args) throws Exception {
 		ElementSimulator uxSimulator = new ElementSimulator();
@@ -68,7 +79,9 @@ public class ElementSimulator {
 		
 		Element<?> photoGallery = uxSimulator.createPhotoGallery();
 		Element<?> simpleTable = uxSimulator.createSimpleTable();
+		Element<?> crazyElement = uxSimulator.createCrazyElement();
 		
-		new ExampleExport().exportElementsToFileAndOpenDefaultBrowser(htmlFile, photoGallery, simpleTable);
+		new ExampleExport().exportElementsToFileAndOpenDefaultBrowser(htmlFile, 
+				photoGallery, simpleTable, crazyElement);
 	}
 }
