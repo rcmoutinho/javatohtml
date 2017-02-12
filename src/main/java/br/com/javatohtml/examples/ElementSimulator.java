@@ -71,17 +71,26 @@ public class ElementSimulator {
 	public Element<?> createCrazyElement(){
 		return tag("dog").attr("breed", "German Shepherd").noEndTag();
 	}
+	
+	/**
+	 * Creates an old HTML tag that is not supported anymore by HTML5.
+	 * 
+	 * @return
+	 */
+	public Element<?> createOldHtmlTag(){
+		return tag("center").append("bye old tag");
+	}
 
 	public static void main(String[] args) throws Exception {
 		ElementSimulator uxSimulator = new ElementSimulator();
 		
 		File htmlFile = new File(ExampleExport.BASE_EXAMPLE_PATH + "ExSimulator.html");
 		
-		Element<?> photoGallery = uxSimulator.createPhotoGallery();
-		Element<?> simpleTable = uxSimulator.createSimpleTable();
-		Element<?> crazyElement = uxSimulator.createCrazyElement();
-		
 		new ExampleExport().exportElementsToFileAndOpenDefaultBrowser(htmlFile, 
-				photoGallery, simpleTable, crazyElement);
+			uxSimulator.createPhotoGallery(), 
+			uxSimulator.createSimpleTable(), 
+			uxSimulator.createCrazyElement(),
+			uxSimulator.createOldHtmlTag()
+		);
 	}
 }
