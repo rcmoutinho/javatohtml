@@ -18,6 +18,7 @@ public class ElementCreatorTest {
 	@Test
 	public void testCreatingA() {
 		assertEquals("<a></a>", a().toHtml());
+		assertEquals("<a>text</a>", a("text").toHtml());
 	}
 
 	@Test

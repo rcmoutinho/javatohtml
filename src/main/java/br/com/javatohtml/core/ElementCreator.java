@@ -41,6 +41,16 @@ public class ElementCreator {
 	}
 
 	/**
+	 * Creates {@link A} with a {@link String}.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static A a(String value) {
+		return new A().append(value);
+	}
+
+	/**
 	 * Creates {@link Br} element.
 	 * 
 	 * @return
