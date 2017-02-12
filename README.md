@@ -32,6 +32,18 @@ The **JAVA** code above will become this **HTML**:
 </div>
 ```
 
+Need to use old tags or not implemented elements/attributes? Try this crazy one to understand how far you can go.
+
+```JAVA
+tag("dog").attr("breed", "German Shepherd").noEndTag().toHtml();
+```
+
+Just works:
+
+```HTML
+<dog breed="German Shepherd" />
+```
+
 ## Ways to enjoy JavaToHtml API
 * Take advantage of a compiled language to build HTML without weird bugs hard to find and fix
 * Create email templates dynamically on a efficient way
