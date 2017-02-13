@@ -11,7 +11,7 @@ I'm really glad you're reading this, thanks for taking the time to contribute!
 
 * I'm using eclipse default formating to make a good code format, but it's not a requirement. Just have a try.
 * To create new elements, with HTML5 support please, I use [W3C Schools](http://www.w3schools.com/tags/) to check not implemented tags/attributes yet and get the description of each attribute to know what each one does
-* Make some unit test to check the supported, attributes utilization and other specific things of your implementation
+* Make some unit test to check the supported tags, attributes utilization and other specific things of your implementation
 
 ## Suggesting Enhancements / New Features
 
