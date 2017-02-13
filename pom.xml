@@ -5,10 +5,10 @@
 	<groupId>br.com.javatohtml</groupId>
 	<artifactId>javatohtml</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1.beta</version>
+	<version>0.1.0</version>
 	<name>javatohtml</name>
 	<description>Write JAVA, build HTML.</description>
-	<url>https://twitter.com/rcmoutinho</url>
+	<url>https://github.com/rcmoutinho/javatohtml</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
