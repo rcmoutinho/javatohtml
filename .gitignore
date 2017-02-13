@@ -17,6 +17,3 @@ target/
 
 # ignore generated examples
 src/main/java/br/com/javatohtml/examples/**/*.html
-
-# ignore local documentation files
-docs/
