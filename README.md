@@ -10,13 +10,18 @@ import static br.com.javatohtml.core.ElementCreator.*;
 
 public class Main {
     public static void main(String[] args) {
-        div().style("border: 2px solid #000")
+        div().style("border:5px solid #aaa;padding:25px;margin:25px;text-align:center;")
         .append(
-            h1("My Gallery")
+            h1("Foods").style("margin:0 0 25px;")
         ).append(
-            img().src("img/java.jpg").classCss("language")
+            img().alt("cupcake").classCss("candy")
+                .src("https://cdn4.iconfinder.com/data/icons/miu/24/food-cupcake-muffin-dessert-birthday-glyph-128.png")
         ).append(
-            img().src("img/html.jpg")
+            img().alt("pizza").classCss("slice")
+                .src("https://cdn4.iconfinder.com/data/icons/miu/24/food-pizza-fastfood-glyph-128.png")
+        ).append(
+            img().alt("bith cake").classCss("candy")
+                .src("https://cdn4.iconfinder.com/data/icons/miu/24/food-birthday-cake-party-candle-glyph-128.png")
         ).toHtml();
     }
 }
@@ -25,10 +30,11 @@ public class Main {
 The **JAVA** code above will become this **HTML**:
 
 ```HTML
-<div style="border: 2px solid #000;">
-    <h1>My Gallery</h1>
-    <img class="language" src="img/java.jpg" />
-    <img src="img/html.jpg" />
+<div style="border: 5px solid #aaa; padding: 25px; margin: 25px; text-align: center;">
+    <h1 style="margin: 0 0 25px;">Foods</h1>
+    <img class="candy" alt="cupcake" src="https://cdn4.iconfinder.com/data/icons/miu/24/food-cupcake-muffin-dessert-birthday-glyph-128.png">
+    <img class="slice" alt="pizza" src="https://cdn4.iconfinder.com/data/icons/miu/24/food-pizza-fastfood-glyph-128.png">
+    <img class="candy" alt="bith cake" src="https://cdn4.iconfinder.com/data/icons/miu/24/food-birthday-cake-party-candle-glyph-128.png">
 </div>
 ```
 

@@ -28,11 +28,14 @@ public class ElementSimulator {
 			.append(
 				h1("Foods").style("margin:0 0 25px;")
 			).append(
-				img().src("https://cdn4.iconfinder.com/data/icons/miu/24/food-cupcake-muffin-dessert-birthday-glyph-128.png").classCss("candy")
+				img().alt("cupcake").classCss("candy")
+					.src("https://cdn4.iconfinder.com/data/icons/miu/24/food-cupcake-muffin-dessert-birthday-glyph-128.png")
 			).append(
-				img().src("https://cdn4.iconfinder.com/data/icons/miu/24/food-pizza-fastfood-glyph-128.png").classCss("slice")
+				img().alt("pizza").classCss("slice")
+					.src("https://cdn4.iconfinder.com/data/icons/miu/24/food-pizza-fastfood-glyph-128.png")
 			).append(
-				img().src("https://cdn4.iconfinder.com/data/icons/miu/24/food-birthday-cake-party-candle-glyph-128.png").classCss("candy")
+				img().alt("bith cake").classCss("candy")
+					.src("https://cdn4.iconfinder.com/data/icons/miu/24/food-birthday-cake-party-candle-glyph-128.png")
 			);
 	}
 
