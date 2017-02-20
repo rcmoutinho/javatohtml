@@ -4,11 +4,20 @@
 
 	<groupId>br.com.javatohtml</groupId>
 	<artifactId>javatohtml</artifactId>
-	<packaging>jar</packaging>
 	<version>0.1.0</version>
-	<name>javatohtml</name>
+	<packaging>jar</packaging>
+
+	<name>JavaToHtml</name>
 	<description>Write JAVA, build HTML.</description>
 	<url>https://github.com/rcmoutinho/javatohtml</url>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
