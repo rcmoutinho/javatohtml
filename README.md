@@ -1,6 +1,6 @@
 # JAVA to HTML
 
-[![Travis][travis img]][travis]
+[![Build Status][travis img]][travis]
 [![Release][release img]][release]
 [![License][license img]][license]
 [![Donate][donate img]][donate]
@@ -87,7 +87,7 @@ You can run **mvn clean verify** to execute all tests and check the code quality
 After years developing complex reports on HTML format and email models, I've decided to create an API that minimally respect W3C docs to compile and transform JAVA code into HTML.
 
 [travis]:https://travis-ci.org/rcmoutinho/javatohtml
-[travis img]:https://img.shields.io/travis/rust-lang/rust.svg
+[travis img]:https://travis-ci.org/rcmoutinho/javatohtml.svg?branch=master
 
 [release]:https://github.com/rcmoutinho/javatohtml/releases
 [release img]:https://img.shields.io/github/release/rcmoutinho/javatohtml.svg
