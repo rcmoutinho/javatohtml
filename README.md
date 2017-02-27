@@ -1,8 +1,8 @@
 # JAVA to HTML
 
 [![Donate][donate img]][donate]
-[![][release img]][release]
-[![][license img]][license]
+[![Release][release img]][release]
+[![License][license img]][license]
 
 Write **JAVA** code and get **HTML** without writing unreadable big *String*. Create report or email models easily. All implementation focus on HTML5 features but it's possible to create any other attribute/element (older or not implemented yet) if it's necessary.
 
