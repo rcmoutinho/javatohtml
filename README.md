@@ -1,5 +1,6 @@
 # JAVA to HTML
 
+[![Donate][donate img]][donate]
 [![][release img]][release]
 [![][license img]][license]
 
@@ -83,6 +84,9 @@ You can run **mvn clean verify** to execute all tests and check the code quality
 
 ## Motivation
 After years developing complex reports on HTML format and email models, I've decided to create an API that minimally respect W3C docs to compile and transform JAVA code into HTML.
+
+[donate]:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6LFUJSNAGZ6WJ
+[donate img]:https://img.shields.io/badge/Donate-PayPal-green.svg
 
 [release]:https://github.com/rcmoutinho/javatohtml/releases
 [release img]:https://img.shields.io/github/release/rcmoutinho/javatohtml.svg
