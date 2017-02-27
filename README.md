@@ -1,8 +1,8 @@
 # JAVA to HTML
 
-[![Donate][donate img]][donate]
 [![Release][release img]][release]
 [![License][license img]][license]
+[![Donate][donate img]][donate]
 
 Write **JAVA** code and get **HTML** without writing unreadable big *String*. Create report or email models easily. All implementation focus on HTML5 features but it's possible to create any other attribute/element (older or not implemented yet) if it's necessary.
 
@@ -85,11 +85,11 @@ You can run **mvn clean verify** to execute all tests and check the code quality
 ## Motivation
 After years developing complex reports on HTML format and email models, I've decided to create an API that minimally respect W3C docs to compile and transform JAVA code into HTML.
 
-[donate]:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6LFUJSNAGZ6WJ
-[donate img]:https://img.shields.io/badge/Donate-PayPal-green.svg
-
 [release]:https://github.com/rcmoutinho/javatohtml/releases
 [release img]:https://img.shields.io/github/release/rcmoutinho/javatohtml.svg
 
 [license]:LICENSE
 [license img]:https://img.shields.io/badge/License-Apache%202-blue.svg
+
+[donate]:https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6LFUJSNAGZ6WJ
+[donate img]:https://img.shields.io/badge/Donate-PayPal-green.svg
