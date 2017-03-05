@@ -20,14 +20,11 @@ public class Main {
         .append(
             h1("Foods").style("margin:0 0 25px;")
         ).append(
-            img().alt("cupcake").classCss("candy")
-                .src("https://cdn4.iconfinder.com/data/icons/miu/24/food-cupcake-muffin-dessert-birthday-glyph-128.png")
+            img().alt("cupcake").classCss("candy").src("https://goo.gl/pXMTp6")
         ).append(
-            img().alt("pizza").classCss("slice")
-                .src("https://cdn4.iconfinder.com/data/icons/miu/24/food-pizza-fastfood-glyph-128.png")
+            img().alt("pizza").classCss("slice").src("https://goo.gl/SdjTNU")
         ).append(
-            img().alt("bith cake").classCss("candy")
-                .src("https://cdn4.iconfinder.com/data/icons/miu/24/food-birthday-cake-party-candle-glyph-128.png")
+            img().alt("bith cake").classCss("candy").src("https://goo.gl/42qf7b")
         ).toHtml();
     }
 }
@@ -38,9 +35,9 @@ The **JAVA** code above will become this **HTML**:
 ```HTML
 <div style="border: 5px solid #aaa; padding: 25px; margin: 25px; text-align: center;">
     <h1 style="margin: 0 0 25px;">Foods</h1>
-    <img class="candy" alt="cupcake" src="https://cdn4.iconfinder.com/data/icons/miu/24/food-cupcake-muffin-dessert-birthday-glyph-128.png">
-    <img class="slice" alt="pizza" src="https://cdn4.iconfinder.com/data/icons/miu/24/food-pizza-fastfood-glyph-128.png">
-    <img class="candy" alt="bith cake" src="https://cdn4.iconfinder.com/data/icons/miu/24/food-birthday-cake-party-candle-glyph-128.png">
+    <img class="candy" alt="cupcake" src="https://goo.gl/pXMTp6">
+    <img class="slice" alt="pizza" src="https://goo.gl/SdjTNU">
+    <img class="candy" alt="bith cake" src="https://goo.gl/42qf7b">
 </div>
 ```
 
