@@ -73,7 +73,6 @@ tag("center").append("bye old tag").toHtml();
 **Note:** there is no intentions to compete with template engines, only build understandable and good looking code.
 
 ## Next Goals
-* Deploy the project at maven central repository
 * Create feature to translate simple mapped css classes on styles making easier to modify, understand and maintain the code
 * Support the main tags: \<html>, \<head>, \<body>, \<link> and \<script>.
 * Support new HTML5 tags like \<main>, \<article>, etc
