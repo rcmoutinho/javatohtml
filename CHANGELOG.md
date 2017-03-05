@@ -1,4 +1,4 @@
-# Change Log
+# Changelog
 All notable changes to **javatohtml** will be documented in this file.
 
 ## [Unreleased]
