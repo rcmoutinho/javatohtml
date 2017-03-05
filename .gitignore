@@ -16,4 +16,4 @@ target/
 *.jar
 
 # ignore generated examples
-src/main/java/br/com/javatohtml/examples/**/*.html
+src/main/java/com/javatohtml/examples/**/*.html
